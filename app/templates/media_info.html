@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}{{ media_name }} Information{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Back Button at top -->
+    <div class="mb-4">
+        <a href="{{ url_for('main.media_search') }}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Media Selection
+        </a>
+    </div>
+
+    <h1>{{ media_name }}</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2>Basic Information</h2>
+            <p><strong>Type:</strong> {{ media_type }}</p>
+            <p><strong>Purpose:</strong> {{ purpose }}</p>
+            
+            <h2>Composition</h2>
+            <ul class="list-group mb-3">
+                {% for component in composition %}
+                <li class="list-group-item">
+                    <strong>{{ component.name }}:</strong> {{ component.description }}
+                </li>
+                {% endfor %}
+            </ul>
+
+            <h2>Characteristics</h2>
+            <ul class="list-group mb-3">
+                {% for characteristic in characteristics %}
+                <li class="list-group-item">{{ characteristic }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Common Uses</h2>
+            <ul class="list-group mb-3">
+                {% for use in common_uses %}
+                <li class="list-group-item">{{ use }}</li>
+                {% endfor %}
+            </ul>
+
+            {% if media_images %}
+            <h2>Media Images</h2>
+            <div id="mediaCarousel" class="carousel slide mb-4" data-bs-ride="false">
+                <div class="carousel-inner">
+                    {% for image in media_images %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ image.src }}" class="d-block w-100" alt="{{ image.caption }}">
+                        <div class="carousel-caption bg-dark bg-opacity-75">
+                            <p>{{ image.caption }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if media_images|length > 1 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if example_images %}
+            <h2>Example Growth Patterns</h2>
+            <div id="exampleCarousel" class="carousel slide mb-4" data-bs-ride="false">
+                <div class="carousel-inner">
+                    {% for image in example_images %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ image.src }}" class="d-block w-100" alt="{{ image.caption }}">
+                        <div class="carousel-caption bg-dark bg-opacity-75">
+                            <p>{{ image.caption }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if example_images|length > 1 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#exampleCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#exampleCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <a href="{{ url_for('main.media_search') }}" class="btn btn-primary mb-4">Back to Media Search</a>
+</div>
+{% endblock %} 

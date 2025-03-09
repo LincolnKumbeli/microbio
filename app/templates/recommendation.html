@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Recommendations - MicroBio App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Growth Media Recommendations</h2>
+            </div>
+            <div class="card-body">
+                <h4>Selected Organism: {{ organism|replace('_', ' ')|title }}</h4>
+                
+                <div class="mt-4">
+                    <h5>Recommended Media:</h5>
+                    <ul class="list-group">
+                        {% if organism == 'e_coli' %}
+                            <li class="list-group-item">
+                                <h6>MacConkey Agar</h6>
+                                <p>Ideal for isolating gram-negative enteric bacteria. E. coli will appear as pink colonies.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>EMB Agar</h6>
+                                <p>E. coli produces metallic green sheen colonies.</p>
+                            </li>
+                        {% elif organism == 's_aureus' %}
+                            <li class="list-group-item">
+                                <h6>Mannitol Salt Agar</h6>
+                                <p>S. aureus produces yellow colonies due to mannitol fermentation.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>Blood Agar</h6>
+                                <p>Shows beta-hemolysis pattern.</p>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <form method="POST" action="{{ url_for('main.results') }}" class="mt-4">
+                    <input type="hidden" name="organism" value="{{ organism }}">
+                    <input type="hidden" name="media" value="{{ media }}">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">View Growth Results</button>
+                        <a href="{{ url_for('main.home') }}" class="btn btn-secondary">Back to Selection</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}MicroBio App{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">MicroBio App</h1>
+        <p class="lead">Choose your search method to explore microbiology information</p>
+    </div>
+
+    <div class="row justify-content-center g-4">
+        <!-- Search by Organism Card -->
+        <div class="col-md-5">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-bacteria fa-3x text-primary mb-3"></i>
+                    <h2 class="h4 card-title">Search by Organism</h2>
+                    <p class="card-text">
+                        Select a microorganism to view its growth characteristics and recommended culture media.
+                        Learn about colony morphology and identification tests.
+                    </p>
+                    <a href="{{ url_for('main.organism_search') }}" class="btn btn-primary">
+                        <i class="fas fa-microscope me-2"></i>Search Organisms
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search by Media Card -->
+        <div class="col-md-5">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-flask fa-3x text-primary mb-3"></i>
+                    <h2 class="h4 card-title">Search by Culture Media</h2>
+                    <p class="card-text">
+                        Explore different types of culture media, their composition, and typical uses.
+                        Learn about selective and differential properties.
+                    </p>
+                    <a href="{{ url_for('main.media_search') }}" class="btn btn-primary">
+                        <i class="fas fa-vial me-2"></i>Search Media
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <p class="text-muted">
+            Explore detailed microbiology information to enhance your understanding of bacterial growth and identification.
+        </p>
+    </div>
+</div>
+{% endblock %} 

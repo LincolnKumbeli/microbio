@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Results - MicroBio App{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Organism Info -->
+            <div class="alert alert-info mb-4">
+                <h4 class="mb-0">{{ organism.replace('_', ' ').title() }}</h4>
+                <p>Media Used: {{ media.replace('_', ' ').title() }}</p>
+            </div>
+
+            <!-- Media Plate Image -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Growth on {{ media.replace('_', ' ').title() }}</h4>
+                </div>
+                <div class="card-body text-center">
+                    {% if plate_images %}
+                        <div id="plateImagesCarousel" class="carousel slide">
+                            <!-- Carousel indicators -->
+                            {% if plate_images|length > 1 %}
+                            <div class="carousel-indicators">
+                                {% for image in plate_images %}
+                                    <button type="button" 
+                                            data-bs-target="#plateImagesCarousel" 
+                                            data-bs-slide-to="{{ loop.index0 }}"
+                                            {% if loop.first %}class="active"{% endif %}
+                                            aria-label="Slide {{ loop.index }}">
+                                    </button>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- Carousel slides -->
+                            <div class="carousel-inner">
+                                {% for image in plate_images %}
+                                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                        <img src="{{ image.src }}"
+                                             class="d-block w-100 rounded media-plate-image"
+                                             alt="{{ image.caption }}"
+                                             onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/no-image.png') }}'; this.alt='Image not available'">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Carousel controls -->
+                            {% if plate_images|length > 1 %}
+                            <button class="carousel-control-prev" type="button" data-bs-target="#plateImagesCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#plateImagesCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            {% endif %}
+                        </div>
+
+                        <!-- Image counter -->
+                        {% if plate_images|length > 1 %}
+                        <div class="image-counter mt-2 text-muted">
+                            Image <span id="currentImageIndex">1</span> of {{ plate_images|length }}
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="no-image-placeholder">
+                            <i class="fas fa-microscope fa-3x mb-3"></i>
+                            <p>No reference images available for {{ organism.replace('_', ' ').title() }} on {{ media.replace('_', ' ').title() }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Growth Characteristics -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Growth Characteristics</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th width="25%">Colony Morphology</th>
+                            <td>{{ characteristics.morphology }}</td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td>{{ characteristics.color }}</td>
+                        </tr>
+                        <tr>
+                            <th>Size</th>
+                            <td>{{ characteristics.size }}</td>
+                        </tr>
+                        <tr>
+                            <th>Additional Features</th>
+                            <td>{{ characteristics.additional_features or characteristics.other }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Confirmatory Tests -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Recommended Confirmatory Tests</h4>
+                </div>
+                <div class="card-body">
+                    {% if confirmatory_tests is mapping and confirmatory_tests.identification_tests %}
+                        <!-- S. pneumoniae style data -->
+                        {% for test in confirmatory_tests.identification_tests %}
+                        <div class="mb-4">
+                            <h5 class="card-title">{{ test.name }}</h5>
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Expected Result</th>
+                                        <th>Explanation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ test.name }}</td>
+                                        <td><strong>{{ test.expected_result }}</strong></td>
+                                        <td>{{ test.explanation }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endfor %}
+
+                        {% if confirmatory_tests.antimicrobial_tests %}
+                        <div class="mb-4">
+                            <h5 class="card-title">Antimicrobial Susceptibility Testing</h5>
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Method</th>
+                                        <th>Interpretation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for test in confirmatory_tests.antimicrobial_tests %}
+                                    <tr>
+                                        <td>{{ test.name }}</td>
+                                        <td>{{ test.method }}</td>
+                                        <td>{{ test.interpretation }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <!-- Standard list-style data -->
+                        {% for test_group in confirmatory_tests %}
+                        <div class="mb-4">
+                            <h5 class="card-title">{{ test_group.name }}</h5>
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Expected Result</th>
+                                        <th>Explanation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for test in test_group.tests %}
+                                    <tr>
+                                        <td>{{ test.test }}</td>
+                                        <td><strong>{{ test.result }}</strong></td>
+                                        <td>{{ test.explanation }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-4">
+                <a href="{{ url_for('main.home') }}" class="btn btn-primary">Start New Analysis</a>
+            </div>
+
+            <!-- Add JavaScript for carousel counter -->
+            {% if plate_images and plate_images|length > 1 %}
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const carousel = document.getElementById('plateImagesCarousel');
+                const currentImageIndex = document.getElementById('currentImageIndex');
+                
+                carousel.addEventListener('slid.bs.carousel', function(event) {
+                    const activeSlide = event.to + 1;
+                    currentImageIndex.textContent = activeSlide;
+                });
+            });
+            </script>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Media Search - MicroBio App{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Search by Culture Media</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('main.media_info') }}" id="mediaForm">
+                    <div class="mb-4">
+                        <label for="media" class="form-label">Select Culture Media:</label>
+                        <select class="form-select" id="media" name="media" required>
+                            <option value="">Choose a media type...</option>
+                            <optgroup label="General Purpose Media">
+                                <option value="blood_agar">Blood Agar</option>
+                                <option value="chocolate_agar">Chocolate Agar</option>
+                                <option value="mueller_hinton">Mueller Hinton Agar</option>
+                            </optgroup>
+                            
+                            <optgroup label="Selective Media">
+                                <option value="mac_conkey">MacConkey Agar</option>
+                                <option value="mannitol_salt">Mannitol Salt Agar</option>
+                                <option value="ccfa">CCFA (Cycloserine-Cefoxitin Fructose Agar)</option>
+                                <option value="thayer_martin">Modified Thayer-Martin Agar</option>
+                            </optgroup>
+                            
+                            <optgroup label="Differential Media">
+                                <option value="emb">EMB Agar</option>
+                                <option value="chrom_agar">CHROMagar Candida</option>
+                            </optgroup>
+                            
+                            <optgroup label="Specialized Media">
+                                <option value="bcye">BCYE Agar</option>
+                                <option value="sab_dex">Sabouraud Dextrose Agar</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- Back Button -->
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('main.home') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Search Options
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mediaSelect = document.getElementById('media');
+    const mediaForm = document.getElementById('mediaForm');
+    
+    mediaSelect.addEventListener('change', function() {
+        if (this.value) {
+            mediaForm.submit();
+        }
+    });
+});
+</script>
+{% endblock %} 
