@@ -100,37 +100,48 @@ CONFIRMATORY_TESTS_DATA = {
             ]
         }
     ],
-    's_pneumoniae': {
-        'identification_tests': [
-            {
-                'name': 'Optochin Susceptibility Test',
-                'expected_result': 'Sensitive (≥14 mm zone of inhibition)',
-                'explanation': 'S. pneumoniae is characteristically sensitive to optochin (ethylhydrocupreine), distinguishing it from other alpha-hemolytic streptococci'
-            },
-            {
-                'name': 'Bile Solubility Test',
-                'expected_result': 'Positive (colony lysis)',
-                'explanation': 'S. pneumoniae colonies dissolve in the presence of bile salts (sodium deoxycholate), a unique characteristic among streptococci'
-            },
-            {
-                'name': 'Catalase Test',
-                'expected_result': 'Negative',
-                'explanation': 'S. pneumoniae does not produce catalase enzyme, helping differentiate it from staphylococci'
-            },
-            {
-                'name': 'Gram Stain',
-                'expected_result': 'Gram-positive diplococci with characteristic lancet shape',
-                'explanation': 'Microscopic examination reveals pairs of oval cocci with pointed ends (lancet-shaped)'
-            }
-        ],
-        'antimicrobial_tests': [
-            {
-                'name': 'Penicillin Susceptibility',
-                'method': 'Oxacillin disk (1 µg) screening',
-                'interpretation': 'Zone size ≥20 mm indicates susceptibility to penicillin for non-meningeal isolates'
-            }
-        ]
-    },
+    's_pneumoniae': [
+        {
+            'name': 'Primary Tests',
+            'tests': [
+                {
+                    'test': 'Optochin Sensitivity Test',
+                    'result': 'Sensitive (zone of inhibition ≥14 mm)',
+                    'explanation': 'Differentiates S. pneumoniae (optochin-sensitive) from viridans streptococci (optochin-resistant).'
+                },
+                {
+                    'test': 'Bile Solubility Test',
+                    'result': 'Positive (colony lysis in bile salts)',
+                    'explanation': 'S. pneumoniae is bile-soluble, while other alpha-hemolytic streptococci are not.'
+                },
+                {
+                    'test': 'Gram Stain',
+                    'result': 'Gram-positive, lancet-shaped diplococci',
+                    'explanation': 'Distinctive morphology of S. pneumoniae.'
+                }
+            ]
+        },
+        {
+            'name': 'Additional Tests',
+            'tests': [
+                {
+                    'test': 'Catalase Test',
+                    'result': 'Negative',
+                    'explanation': 'Differentiates S. pneumoniae from catalase-positive bacteria like Staphylococcus species.'
+                },
+                {
+                    'test': 'Quellung Reaction',
+                    'result': 'Positive (capsular swelling seen under microscope)',
+                    'explanation': 'Identifies S. pneumoniae by detecting its polysaccharide capsule using specific antisera.'
+                },
+                {
+                    'test': 'PCR for S. pneumoniae',
+                    'result': 'Positive for pneumococcal-specific genes (e.g., lytA, ply)',
+                    'explanation': 'Molecular confirmation of S. pneumoniae in clinical samples.'
+                }
+            ]
+        }
+    ],
     'n_gonorrhoeae': [
         {
             'name': 'Primary Identification Tests',
@@ -658,11 +669,8 @@ growth_characteristics = {
             'Culturing of other fastidious organisms'
         ],
         'images': [
-            {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar 1'},
-            {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar 2'},
-            {'src': '/static/images/plates/chocolate/choc_growth3.jpg', 'caption': 'Growth pattern on Chocolate Agar 3'},
-            {'src': '/static/images/plates/chocolate/choc_growth4.jpg', 'caption': 'Growth pattern on Chocolate Agar 4'},
-            {'src': '/static/images/plates/chocolate/choc_growth5.jpg', 'caption': 'Growth pattern on Chocolate Agar 5'}
+            {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 1'},
+            {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 2'}
         ]
     },
     'emb': {
@@ -1030,8 +1038,12 @@ PLATE_IMAGES = {
     'h_influenzae': {
         'chocolate_agar': [
             {
-                'src': 'h_influenzae_choc.jpg',
-                'caption': 'H. influenzae on Chocolate Agar - Small, transparent colonies'
+                'src': '/static/images/organisms/hinfluenzae/choc_growth1.jpg',
+                'caption': 'H. influenzae on Chocolate Agar - Small, transparent colonies (Example 1)'
+            },
+            {
+                'src': '/static/images/organisms/hinfluenzae/choc_growth2.jpg',
+                'caption': 'H. influenzae on Chocolate Agar - Small, transparent colonies (Example 2)'
             }
         ]
     },
@@ -1141,16 +1153,16 @@ MEDIA_EXAMPLE_IMAGES = {
     ],
     'chocolate_agar': [
         {
-            'src': '/static/images/plates/chocolate/choc_blank.jpg',
-            'caption': 'Uninoculated Chocolate Agar plate'
+            'src': '/static/images/plates/chocolate_agar/Haemophilus_influenzae_colony_morphology_on_chocolate_agar.jpg',
+            'caption': 'Haemophilus_influenzae_colony_morphology_on_chocolate_agar.jpg'
         },
         {
-            'src': '/static/images/plates/chocolate/H_influenza_on_choc.jpg',
-            'caption': 'H. influenzae growth on Chocolate Agar'
+            'src': '/static/images/plates/chocolate_agar/choc_growth1.jpg',
+            'caption': 'choc_growth1.jpg'
         },
         {
-            'src': '/static/images/plates/chocolate/choc_haemophilus.jpg',
-            'caption': 'Example of Haemophilus growth on Chocolate Agar'
+            'src': '/static/images/plates/chocolate_agar/choc_growth2.jpg',
+            'caption': 'choc_growth2.jpg'
         }
     ]
 }
@@ -1263,11 +1275,8 @@ MEDIA_INFO = {
             'Culturing of other fastidious organisms'
         ],
         'images': [
-            {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar 1'},
-            {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar 2'},
-            {'src': '/static/images/plates/chocolate/choc_growth3.jpg', 'caption': 'Growth pattern on Chocolate Agar 3'},
-            {'src': '/static/images/plates/chocolate/choc_growth4.jpg', 'caption': 'Growth pattern on Chocolate Agar 4'},
-            {'src': '/static/images/plates/chocolate/choc_growth5.jpg', 'caption': 'Growth pattern on Chocolate Agar 5'}
+            {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 1'},
+            {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 2'}
         ]
     },
     'emb': {
@@ -1530,6 +1539,151 @@ MEDIA_INFO = {
     }
 }
 
+# Growth results for all organism-media combinations
+GROWTH_RESULTS = {
+    'e_coli': {
+        'mac_conkey': {'result': 'GOOD', 'description': 'Pink colonies (lactose fermenter)'},
+        'emb': {'result': 'GOOD', 'description': 'Metallic green sheen (vigorous lactose fermenter)'},
+        'blood_agar': {'result': 'GOOD', 'description': 'Gray, non-hemolytic or beta-hemolytic colonies'},
+        'sab_dex': {'result': 'POOR', 'description': 'Poor or minimal growth. SDA is not recommended for E. coli because: 1) The acidic pH (5.6) inhibits bacterial growth, 2) The medium lacks essential nutrients for bacterial metabolism, 3) SDA is specifically designed for fungi, not bacteria'},
+        'chocolate_agar': {'result': 'GOOD', 'description': 'Good growth due to enriched medium'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. MacConkey or EMB Agar recommended for optimal isolation and identification of E. coli. These media provide selective pressure against Gram-positive organisms and differentiate lactose fermenters.'}
+    },
+    's_aureus': {
+        'mannitol_salt': {'result': 'GOOD', 'description': 'Yellow colonies (ferments mannitol, turning the agar yellow)'},
+        'blood_agar': {'result': 'GOOD', 'description': 'Beta-hemolysis (clear zones around colonies)'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. MacConkey agar contains bile salts and crystal violet which inhibit Gram-positive organisms like S. aureus. This selective pressure is specifically designed to prevent growth of Gram-positive bacteria.'},
+        'emb': {'result': 'POOR', 'description': 'No growth expected. EMB agar contains selective agents (eosin Y and methylene blue) that inhibit Gram-positive organisms like S. aureus. The medium is designed for Gram-negative bacteria only.'},
+        'chocolate_agar': {'result': 'GOOD', 'description': 'Good growth with typical golden pigmentation'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. Mannitol Salt Agar or Blood Agar recommended as they support S. aureus growth and provide diagnostic characteristics (mannitol fermentation and hemolysis respectively).'}
+    },
+    's_pneumoniae': {
+        'blood_agar': {'result': 'GOOD', 'description': 'Alpha-hemolysis (greenish discoloration around colonies)'},
+        'chocolate_agar': {'result': 'GOOD', 'description': 'Good growth (no hemolysis visible due to lysed RBCs)'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. S. pneumoniae is a Gram-positive organism and is inhibited by the bile salts and crystal violet in MacConkey agar. Additionally, this fastidious organism requires enriched media for growth.'},
+        'emb': {'result': 'POOR', 'description': 'No growth expected. EMB agar contains inhibitors of Gram-positive bacteria and lacks the enrichment factors required by S. pneumoniae. This fastidious organism needs blood-based media for growth.'},
+        'thayer_martin': {'result': 'POOR', 'description': 'Poor or no growth expected. While Modified Thayer-Martin agar contains enriched nutrients from chocolatized blood, it also contains antibiotics (vancomycin) that inhibit Gram-positive organisms like S. pneumoniae. Blood Agar is recommended as it provides both necessary nutrients and allows observation of characteristic alpha-hemolysis.'},
+        'default': {'result': 'POOR', 'description': 'Poor growth expected. S. pneumoniae requires enriched media (particularly blood-based) for growth due to its fastidious nature. Blood Agar is recommended as it provides both necessary nutrients and allows observation of characteristic alpha-hemolysis.'}
+    },
+    'h_influenzae': {
+        'chocolate_agar': {'result': 'GOOD', 'description': 'Small, smooth, grayish colonies (requires factor V and X)'},
+        'blood_agar': {'result': 'POOR', 'description': 'No growth unless streaked with S. aureus (satellite growth). H. influenzae requires both X (hemin) and V (NAD) factors. While blood agar provides X factor, the V factor is not readily available unless released by other bacteria.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. H. influenzae is a fastidious organism requiring X and V factors for growth. MacConkey agar lacks these essential growth factors and contains inhibitory compounds.'},
+        'emb': {'result': 'POOR', 'description': 'No growth expected. EMB agar lacks the X and V factors required for H. influenzae growth. This fastidious organism cannot grow without these essential nutrients.'},
+        'default': {'result': 'POOR', 'description': 'Poor or no growth expected. H. influenzae requires both X (hemin) and V (NAD) factors for growth. Chocolate Agar is recommended as it provides both factors through the heating of blood, making them readily available.'}
+    },
+    'l_pneumophila': {
+        'bcye': {'result': 'GOOD', 'description': 'Grayish-white or blue-green colonies after 3-5 days'},
+        'blood_agar': {'result': 'POOR', 'description': 'No growth expected. L. pneumophila has specific growth requirements including L-cysteine and iron salts, which are not present in blood agar. The organism cannot synthesize cysteine and requires it for growth.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. L. pneumophila requires L-cysteine and iron salts for growth, which are absent in MacConkey agar. Additionally, the medium lacks the buffering capacity needed for Legionella growth.'},
+        'chocolate_agar': {'result': 'POOR', 'description': 'No growth expected. Despite being an enriched medium, chocolate agar lacks the specific requirements (L-cysteine and iron salts) essential for L. pneumophila growth.'},
+        'default': {'result': 'POOR', 'description': 'No growth expected. L. pneumophila requires a specialized medium (BCYE) containing L-cysteine, iron salts, and activated charcoal. The organism cannot grow without these specific nutrients and environmental conditions.'}
+    },
+    'n_gonorrhoeae': {
+        'thayer_martin': {'result': 'GOOD', 'description': 'Small, gray, translucent colonies'},
+        'chocolate_agar': {'result': 'GOOD', 'description': 'Gray, sticky, smooth colonies'},
+        'blood_agar': {'result': 'POOR', 'description': 'Poor or no growth expected. N. gonorrhoeae is extremely fastidious and requires enriched media with specific growth factors. Blood agar lacks the optimal concentration of nutrients and growth factors needed.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. N. gonorrhoeae is highly fastidious and cannot grow on MacConkey agar due to its basic nutritional requirements not being met. The medium also contains inhibitory compounds.'},
+        'default': {'result': 'POOR', 'description': 'Poor or no growth expected. N. gonorrhoeae requires specialized media (Modified Thayer-Martin or Chocolate Agar) due to its fastidious nature. These media provide essential growth factors and, in the case of MTM, selective agents to inhibit competing flora.'}
+    },
+    'p_aeruginosa': {
+        'mac_conkey': {'result': 'GOOD', 'description': 'Colorless colonies (non-lactose fermenter)'},
+        'mueller_hinton': {'result': 'GOOD', 'description': 'Produces blue-green pigment (pyocyanin)'},
+        'blood_agar': {'result': 'GOOD', 'description': 'Beta-hemolysis (clear zones around colonies)'},
+        'emb': {'result': 'GOOD', 'description': 'Colorless colonies, sometimes metallic sheen'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. MacConkey or Mueller Hinton Agar recommended'}
+    },
+    'aspergillus': {
+        'sab_dex': {'result': 'GOOD', 'description': 'White, then turning black/green/yellow (depending on species) with surface mycelia'},
+        'blood_agar': {'result': 'POOR', 'description': 'Poor or no growth expected. Blood agar has a neutral pH and lacks the high glucose concentration needed for optimal fungal growth. Additionally, faster-growing bacteria may overgrow any fungal colonies.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'No growth expected. MacConkey agar lacks appropriate nutrients for fungal growth and contains compounds that may inhibit fungal development.'},
+        'default': {'result': 'POOR', 'description': 'Poor or no growth expected. Aspergillus species require acidic pH and high glucose concentration for optimal growth. Sabouraud Dextrose Agar is recommended as it provides these conditions and inhibits bacterial growth.'}
+    },
+    'c_albicans': {
+        'chrom_agar': {'result': 'GOOD', 'description': 'Green colonies'},
+        'sab_dex': {'result': 'GOOD', 'description': 'Creamy white colonies, smooth and pasty'},
+        'blood_agar': {'result': 'VARIABLE', 'description': 'Variable growth. While C. albicans can grow on blood agar, it is not optimal because: 1) The neutral pH does not suppress bacterial contamination, 2) The medium lacks the high glucose concentration preferred by yeasts, 3) Morphological features may be harder to observe.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'Poor or no growth expected. MacConkey agar contains bile salts and crystal violet which can inhibit fungal growth. The medium also lacks the nutrients required for proper fungal development.'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. CHROMagar or Sabouraud Dextrose Agar recommended as they provide optimal conditions for fungal growth and allow for better identification. SDA\'s acidic pH and high glucose content favor fungal growth while inhibiting bacteria.'}
+    },
+    'c_auris': {
+        'chrom_agar': {'result': 'GOOD', 'description': 'Pink or mauve colonies (varies by formulation)'},
+        'sab_dex': {'result': 'GOOD', 'description': 'Creamy white colonies, often dry and wrinkled'},
+        'blood_agar': {'result': 'VARIABLE', 'description': 'Variable growth. While C. auris can grow on blood agar, it is not optimal because: 1) The neutral pH allows bacterial overgrowth, 2) The medium lacks the high glucose concentration needed for optimal growth, 3) Colony morphology may be atypical.'},
+        'mac_conkey': {'result': 'POOR', 'description': 'Poor or no growth expected. MacConkey agar contains inhibitory compounds and lacks the necessary nutrients for fungal growth.'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. CHROMagar or Sabouraud Dextrose Agar recommended as they provide optimal conditions for fungal growth and facilitate proper identification. These media offer selective pressure against bacteria and support characteristic colony development.'}
+    },
+    'k_pneumoniae': {
+        'mac_conkey': {'result': 'GOOD', 'description': 'Large, mucoid pink colonies (lactose fermenter)'},
+        'emb': {'result': 'GOOD', 'description': 'Large, mucoid colonies with dark centers'},
+        'blood_agar': {'result': 'GOOD', 'description': 'Large, grayish-white mucoid colonies'},
+        'sab_dex': {
+            'result': 'UNKNOWN',
+            'description': 'Growth characteristics are not well-documented for this combination.',
+            'note': 'Sabouraud Dextrose Agar is designed for fungal isolation and is not routinely used for Klebsiella pneumoniae. The recommended medium for this organism is MacConkey Agar, where it grows as mucoid pink colonies (lactose fermentation positive).'
+        },
+        'default': {
+            'result': 'UNKNOWN',
+            'description': 'Growth characteristics are not well-documented for this combination.',
+            'note': 'For optimal isolation and identification of Klebsiella pneumoniae, use MacConkey Agar (shows lactose fermentation) or EMB Agar (shows mucoid colonies with dark centers).'
+        }
+    },
+    'c_difficile': {
+        'ccfa': {
+            'result': 'GOOD',
+            'description': 'Yellow, irregular colonies with characteristic horse manure-like odor after 24-48 hours of anaerobic incubation.',
+            'note': 'CCFA is the selective medium of choice for C. difficile isolation. The medium contains cycloserine and cefoxitin to inhibit other organisms while allowing C. difficile growth.'
+        },
+        'blood_agar': {
+            'result': 'VARIABLE',
+            'description': 'Growth possible but not recommended due to overgrowth by other organisms.',
+            'note': 'Blood agar lacks selective agents needed to inhibit competing flora. CCFA is the recommended medium for isolation.'
+        },
+        'sab_dex': {
+            'result': 'POOR',
+            'description': 'Poor or no growth expected.',
+            'note': 'C. difficile is an obligate anaerobe and requires selective media like CCFA (Cycloserine-Cefoxitin Fructose Agar) for optimal isolation. SDA is not suitable because: 1) Low pH (~5.6) inhibits bacterial growth, especially obligate anaerobes, 2) Lacks selective antibiotics (cycloserine, cefoxitin) required to suppress competing flora, 3) Aerobic incubation conditions inhibit C. difficile, which requires an anaerobic environment.'
+        },
+        'default': {
+            'result': 'POOR',
+            'description': 'Poor or no growth expected.',
+            'note': 'C. difficile requires selective media (CCFA) for isolation from clinical specimens. CCFA contains cycloserine and cefoxitin to inhibit competing flora while allowing C. difficile to grow.'
+        }
+    }
+}
+
+# Organism name mappings
+ORGANISM_NAMES = {
+    's_pneumoniae': 'Streptococcus pneumoniae',
+    'e_coli': 'Escherichia coli',
+    's_aureus': 'Staphylococcus aureus',
+    'p_aeruginosa': 'Pseudomonas aeruginosa',
+    'k_pneumoniae': 'Klebsiella pneumoniae',
+    'n_gonorrhoeae': 'Neisseria gonorrhoeae',
+    'c_difficile': 'Clostridioides difficile',
+    'h_influenzae': 'Haemophilus influenzae',
+    'l_pneumophila': 'Legionella pneumophila',
+    'aspergillus': 'Aspergillus species',
+    'c_albicans': 'Candida albicans',
+    'c_auris': 'Candida auris',
+    'a_baumannii': 'Acinetobacter baumannii'
+}
+
+# Media name mappings
+MEDIA_NAMES = {
+    'blood_agar': 'Blood Agar',
+    'mac_conkey': 'MacConkey Agar',
+    'emb': 'EMB (Eosin Methylene Blue) Agar',
+    'chocolate_agar': 'Chocolate Agar',
+    'mueller_hinton': 'Mueller Hinton Agar',
+    'mannitol_salt': 'Mannitol Salt Agar',
+    'thayer_martin': 'Modified Thayer-Martin Agar',
+    'ccfa': 'CCFA (Cycloserine-Cefoxitin Fructose Agar)',
+    'bcye': 'BCYE Agar',
+    'sab_dex': 'Sabouraud Dextrose Agar',
+    'chrom_agar': 'CHROMagar Candida'
+}
+
 @main_bp.route('/')
 def home():
     return render_template('home.html')
@@ -1540,19 +1694,40 @@ def results():
         organism = request.form.get('organism')
         media = request.form.get('media')
         
+        # Get full names for organism and media
+        organism_name = ORGANISM_NAMES.get(organism, organism)
+        media_name = MEDIA_NAMES.get(media, media)
+        
         # Get organism-specific tests and growth characteristics
         confirmatory_tests = CONFIRMATORY_TESTS_DATA.get(organism, {})
         characteristics = growth_characteristics.get(organism, {}).get(media, {})
+        
+        # Get media information
+        media_info = MEDIA_INFO.get(media, {})
+        
+        # Get growth results for the organism-media combination
+        default_result = {
+            'result': 'UNKNOWN',
+            'description': 'Growth characteristics are not well-documented for this combination.',
+            'note': f'This combination is not routinely used in clinical microbiology. Please refer to standard media recommendations for {organism_name}.'
+        }
+        
+        organism_results = GROWTH_RESULTS.get(organism, {})
+        growth_result = organism_results.get(media, organism_results.get('default', default_result))
         
         # Get the corresponding plate images if available
         plate_images = PLATE_IMAGES.get(organism, {}).get(media, [])
         
         return render_template('results.html',
                              organism=organism,
+                             organism_name=organism_name,
                              media=media,
+                             media_name=media_name,
                              confirmatory_tests=confirmatory_tests,
                              characteristics=characteristics,
-                             plate_images=plate_images)
+                             plate_images=plate_images,
+                             growth_result=growth_result,
+                             media_info=media_info)
     return redirect(url_for('main.home'))
 
 @main_bp.route('/media-search')
@@ -1569,23 +1744,17 @@ def organism_search():
 def media_info():
     """Route for displaying detailed media information"""
     media_id = request.form.get('media')
+    print(f"Media ID: {media_id}")  # Debug print
+    
     if media_id not in MEDIA_INFO:
         flash('Selected media not found', 'error')
         return redirect(url_for('main.media_search'))
     
     media_data = MEDIA_INFO[media_id]
-    # Get both specific media info images and example images
-    media_images = media_data.get('images', [])
+    
+    # Get example images from the predefined dictionary
     example_images = MEDIA_EXAMPLE_IMAGES.get(media_id, [])
-
-    # Dynamically read images from the media folder
-    media_folder_path = os.path.join('microbio_app', 'app', 'static', 'images', 'plates', 'chocolate')
-    dynamic_images = []
-    if os.path.exists(media_folder_path):
-        for filename in os.listdir(media_folder_path):
-            if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                dynamic_images.append({'src': f'/static/images/plates/chocolate/{filename}', 'caption': filename})
-
+    
     return render_template('media_info.html',
                          media_name=media_data['name'],
                          media_type=media_data['type'],
@@ -1593,6 +1762,4 @@ def media_info():
                          composition=media_data['composition'],
                          characteristics=media_data['characteristics'],
                          common_uses=media_data['common_uses'],
-                         media_images=media_images,
-                         example_images=example_images,
-                         dynamic_images=dynamic_images) 
+                         dynamic_images=example_images)  # Pass example_images as dynamic_images

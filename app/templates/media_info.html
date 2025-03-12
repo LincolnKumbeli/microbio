@@ -42,28 +42,18 @@
             </ul>
 
             {% if dynamic_images %}
-            <h2>Images</h2>
-            <div id="dynamicCarousel" class="carousel slide mb-4" data-bs-ride="false">
-                <div class="carousel-inner">
-                    {% for image in dynamic_images %}
-                    <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <img src="{{ image.src }}" class="d-block w-100" alt="{{ image.caption }}">
-                        <div class="carousel-caption bg-dark bg-opacity-75">
-                            <p>{{ image.caption }}</p>
+            <h2>Example Images</h2>
+            <div class="row justify-content-center">
+                {% for image in dynamic_images %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ image.src }}" class="card-img-top" alt="{{ image.caption }}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <p class="card-text text-center">{{ image.caption }}</p>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
-                {% if dynamic_images|length > 1 %}
-                <button class="carousel-control-prev" type="button" data-bs-target="#dynamicCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#dynamicCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                {% endif %}
+                {% endfor %}
             </div>
             {% endif %}
         </div>

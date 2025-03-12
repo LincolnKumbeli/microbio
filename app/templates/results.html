@@ -1,207 +1,171 @@
 {% extends "base.html" %}
 
-{% block title %}Results - MicroBio App{% endblock %}
+{% block title %}Growth Results - MicroBio App{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <!-- Organism Info -->
-            <div class="alert alert-info mb-4">
-                <h4 class="mb-0">{{ organism.replace('_', ' ').title() }}</h4>
-                <p>Media Used: {{ media.replace('_', ' ').title() }}</p>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Growth Results</h2>
             </div>
-
-            <!-- Media Plate Image -->
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Growth on {{ media.replace('_', ' ').title() }}</h4>
+            <div class="card-body">
+                <h4 class="mb-4">Selected Combination:</h4>
+                <div class="mb-4">
+                    <p><strong>Organism:</strong> {{ organism_name }}</p>
+                    <p><strong>Growth Media:</strong> {{ media_name }}</p>
                 </div>
-                <div class="card-body text-center">
-                    {% if plate_images %}
-                        <div id="plateImagesCarousel" class="carousel slide">
-                            <!-- Carousel indicators -->
-                            {% if plate_images|length > 1 %}
-                            <div class="carousel-indicators">
-                                {% for image in plate_images %}
-                                    <button type="button" 
-                                            data-bs-target="#plateImagesCarousel" 
-                                            data-bs-slide-to="{{ loop.index0 }}"
-                                            {% if loop.first %}class="active"{% endif %}
-                                            aria-label="Slide {{ loop.index }}">
-                                    </button>
-                                {% endfor %}
-                            </div>
-                            {% endif %}
 
-                            <!-- Carousel slides -->
-                            <div class="carousel-inner">
-                                {% for image in plate_images %}
-                                    <div class="carousel-item {% if loop.first %}active{% endif %}">
-                                        <img src="{{ image.src }}"
-                                             class="d-block w-100 rounded media-plate-image"
-                                             alt="{{ image.caption }}"
-                                             onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/no-image.png') }}'; this.alt='Image not available'">
-                                    </div>
-                                {% endfor %}
-                            </div>
-
-                            <!-- Carousel controls -->
-                            {% if plate_images|length > 1 %}
-                            <button class="carousel-control-prev" type="button" data-bs-target="#plateImagesCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#plateImagesCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                            {% endif %}
-                        </div>
-
-                        <!-- Image counter -->
-                        {% if plate_images|length > 1 %}
-                        <div class="image-counter mt-2 text-muted">
-                            Image <span id="currentImageIndex">1</span> of {{ plate_images|length }}
-                        </div>
-                        {% endif %}
+                <h4 class="mb-3">Expected Results for {{ organism_name }} on {{ media_name }}:</h4>
+                <div class="alert {% if growth_result.result == 'GOOD' %}alert-success{% elif growth_result.result == 'POOR' %}alert-warning{% elif growth_result.result == 'UNKNOWN' %}alert-secondary{% else %}alert-info{% endif %} mb-4">
+                    {% if growth_result.result == 'POOR' or growth_result.result == 'UNKNOWN' %}
+                        <h5 class="alert-heading">❌ {{ growth_result.result }}</h5>
+                    {% elif growth_result.result == 'GOOD' %}
+                        <h5 class="alert-heading">✓ {{ growth_result.result }}</h5>
                     {% else %}
-                        <div class="no-image-placeholder">
-                            <i class="fas fa-microscope fa-3x mb-3"></i>
-                            <p>No reference images available for {{ organism.replace('_', ' ').title() }} on {{ media.replace('_', ' ').title() }}</p>
-                        </div>
+                        <h5 class="alert-heading">{{ growth_result.result }}</h5>
+                    {% endif %}
+                    <p class="mb-0">{{ growth_result.description }}</p>
+                    {% if growth_result.note %}
+                        <hr>
+                        <p class="mb-0">📌 {{ growth_result.note }}</p>
                     {% endif %}
                 </div>
-            </div>
 
-            <!-- Growth Characteristics -->
-            <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Growth Characteristics</h4>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th width="25%">Colony Morphology</th>
-                            <td>{{ characteristics.morphology }}</td>
-                        </tr>
-                        <tr>
-                            <th>Color</th>
-                            <td>{{ characteristics.color }}</td>
-                        </tr>
-                        <tr>
-                            <th>Size</th>
-                            <td>{{ characteristics.size }}</td>
-                        </tr>
-                        <tr>
-                            <th>Additional Features</th>
-                            <td>{{ characteristics.additional_features or characteristics.other }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+                {% if media_info %}
+                <h4 class="mb-3">{{ media_name }} - Media Composition & Growth Support:</h4>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Key Components of {{ media_name }}:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            {% for component in media_info.composition %}
+                            <li class="list-group-item">
+                                <strong>{{ component.name }}:</strong> {{ component.description }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        
+                        {% if media_info.purpose %}
+                        <h5 class="card-title mb-2">Purpose of {{ media_name }}:</h5>
+                        <p class="card-text mb-3">{{ media_info.purpose }}</p>
+                        {% endif %}
 
-            <!-- Confirmatory Tests -->
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">{{ organism.replace('_', ' ').title() }} - Recommended Confirmatory Tests</h4>
-                </div>
-                <div class="card-body">
-                    {% if confirmatory_tests is mapping and confirmatory_tests.identification_tests %}
-                        <!-- S. pneumoniae style data -->
-                        {% for test in confirmatory_tests.identification_tests %}
-                        <div class="mb-4">
-                            <h5 class="card-title">{{ test.name }}</h5>
-                            <table class="table table-bordered">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Test</th>
-                                        <th>Expected Result</th>
-                                        <th>Explanation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{ test.name }}</td>
-                                        <td><strong>{{ test.expected_result }}</strong></td>
-                                        <td>{{ test.explanation }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        {% endfor %}
+                        {% if media_info.characteristics %}
+                        <h5 class="card-title mb-2">{{ media_name }} Characteristics:</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            {% for characteristic in media_info.characteristics %}
+                            <li class="list-group-item">{{ characteristic }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
 
-                        {% if confirmatory_tests.antimicrobial_tests %}
-                        <div class="mb-4">
-                            <h5 class="card-title">Antimicrobial Susceptibility Testing</h5>
-                            <table class="table table-bordered">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>Test</th>
-                                        <th>Method</th>
-                                        <th>Interpretation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for test in confirmatory_tests.antimicrobial_tests %}
-                                    <tr>
-                                        <td>{{ test.name }}</td>
-                                        <td>{{ test.method }}</td>
-                                        <td>{{ test.interpretation }}</td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                        {% if growth_result.result == 'GOOD' %}
+                        <div class="alert alert-success">
+                            <h6 class="alert-heading">Why {{ media_name }} Supports Growth of {{ organism_name }}:</h6>
+                            <p class="mb-0">This media provides optimal growth conditions because:</p>
+                            <ul class="mb-0 mt-2">
+                                {% for note in media_info.common_uses %}
+                                <li>{{ note }}</li>
+                                {% endfor %}
+                            </ul>
                         </div>
                         {% endif %}
-                    {% else %}
-                        <!-- Standard list-style data -->
-                        {% for test_group in confirmatory_tests %}
-                        <div class="mb-4">
-                            <h5 class="card-title">{{ test_group.name }}</h5>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if characteristics %}
+                <h4 class="mb-3">Growth Characteristics of {{ organism_name }} on {{ media_name }}:</h4>
+                <ul class="list-group mb-4">
+                    {% if characteristics.morphology %}
+                    <li class="list-group-item">
+                        <strong>Morphology:</strong> {{ characteristics.morphology }}
+                    </li>
+                    {% endif %}
+                    {% if characteristics.color %}
+                    <li class="list-group-item">
+                        <strong>Color:</strong> {{ characteristics.color }}
+                    </li>
+                    {% endif %}
+                    {% if characteristics.size %}
+                    <li class="list-group-item">
+                        <strong>Size:</strong> {{ characteristics.size }}
+                    </li>
+                    {% endif %}
+                    {% if characteristics.other %}
+                    <li class="list-group-item">
+                        <strong>Additional Features:</strong> {{ characteristics.other }}
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+
+                {% if confirmatory_tests %}
+                <h4 class="mb-3">Recommended Confirmatory Tests for {{ organism_name }}:</h4>
+                {% for test_group in confirmatory_tests %}
+                <div class="card mb-4">
+                    <div class="card-header {% if test_group.name == 'Primary Tests' %}bg-primary text-white{% else %}bg-light{% endif %}">
+                        <h5 class="mb-0">{{ test_group.name }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-bordered">
-                                <thead class="table-light">
+                                <thead class="{% if test_group.name == 'Primary Tests' %}table-primary{% else %}table-light{% endif %}">
                                     <tr>
-                                        <th>Test</th>
-                                        <th>Expected Result</th>
-                                        <th>Explanation</th>
+                                        <th style="width: 25%">Test</th>
+                                        <th style="width: 25%">Expected Result</th>
+                                        <th style="width: 50%">Explanation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for test in test_group.tests %}
                                     <tr>
-                                        <td>{{ test.test }}</td>
-                                        <td><strong>{{ test.result }}</strong></td>
+                                        <td><strong>{{ test.test }}</strong></td>
+                                        <td class="{% if 'positive' in test.result.lower() %}text-success{% elif 'negative' in test.result.lower() %}text-danger{% endif %}">
+                                            <strong>{{ test.result }}</strong>
+                                        </td>
                                         <td>{{ test.explanation }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
                         </div>
-                        {% endfor %}
-                    {% endif %}
+                        {% if test_group.note %}
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle"></i> {{ test_group.note }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% if plate_images %}
+                <h4 class="mb-3">Reference Images of {{ organism_name }} on {{ media_name }}:</h4>
+                <div class="row mb-4">
+                    {% for image in plate_images %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <img src="{{ image.src }}" class="card-img-top" alt="{{ image.caption }}">
+                            <div class="card-body">
+                                <p class="card-text">{{ image.caption }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Back Buttons -->
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('main.organism_search') }}" class="btn btn-outline-primary me-2">
+                        <i class="fas fa-arrow-left me-2"></i>Try Different Combination
+                    </a>
+                    <a href="{{ url_for('main.home') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                    </a>
                 </div>
             </div>
-
-            <!-- Back Button -->
-            <div class="text-center mt-4">
-                <a href="{{ url_for('main.home') }}" class="btn btn-primary">Start New Analysis</a>
-            </div>
-
-            <!-- Add JavaScript for carousel counter -->
-            {% if plate_images and plate_images|length > 1 %}
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const carousel = document.getElementById('plateImagesCarousel');
-                const currentImageIndex = document.getElementById('currentImageIndex');
-                
-                carousel.addEventListener('slid.bs.carousel', function(event) {
-                    const activeSlide = event.to + 1;
-                    currentImageIndex.textContent = activeSlide;
-                });
-            });
-            </script>
-            {% endif %}
         </div>
     </div>
 </div>
