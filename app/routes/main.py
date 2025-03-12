@@ -644,614 +644,9 @@ growth_characteristics = {
         ],
         'images': [
             {'src': '/static/images/plates/mac/mac_blank.jpg', 'caption': 'Uninoculated MacConkey Agar plate'},
-            {'src': '/static/images/plates/mac/mac_ecoli.jpg', 'caption': 'E. coli growth (pink colonies)'},
-            {'src': '/static/images/plates/mac/mac_mixed.jpg', 'caption': 'Mixed growth showing lactose and non-lactose fermenters'}
-        ]
-    },
-    'chocolate_agar': {
-        'name': 'Chocolate Agar',
-        'type': 'Enriched Media',
-        'purpose': 'Supports the growth of fastidious organisms, especially Haemophilus and Neisseria species',
-        'composition': [
-            {'name': 'Hemoglobin', 'description': 'Provides X factor (hemin) for growth'},
-            {'name': 'NAD (V factor)', 'description': 'Essential for the growth of Haemophilus species'},
-            {'name': 'Peptones', 'description': 'Provides nutrients for bacterial growth'},
-            {'name': 'Agar', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'Enriched with hemoglobin and NAD',
-            'Brown color due to lysed red blood cells',
-            'Supports growth of fastidious organisms'
-        ],
-        'common_uses': [
-            'Isolation of Haemophilus influenzae',
-            'Isolation of Neisseria gonorrhoeae',
-            'Culturing of other fastidious organisms'
-        ],
-        'images': [
-            {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 1'},
-            {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 2'}
-        ]
-    },
-    'emb': {
-        'name': 'Eosin Methylene Blue (EMB) Agar, Levine',
-        'type': 'Selective and Differential Media',
-        'purpose': 'Primary selective and differential medium for isolation and differentiation of Gram-negative bacteria based on lactose fermentation',
-        'composition': [
-            {'name': 'Eosin Y', 'description': 'Inhibits growth of Gram-positive bacteria and acts as pH indicator'},
-            {'name': 'Methylene Blue', 'description': 'Inhibits Gram-positive bacteria and serves as pH indicator'},
-            {'name': 'Lactose', 'description': 'Fermentable carbohydrate for differentiation'},
-            {'name': 'Peptone', 'description': 'Provides nitrogen and nutrients'},
-            {'name': 'Agar', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'Lactose fermenters appear dark purple to black, or with distinctive green metallic sheen',
-            'Non-lactose fermenters remain colorless and translucent',
-            'Selective against Gram-positive bacteria',
-            'Color interpretation may be challenging with slow lactose fermenters',
-            'Results may take longer than 24 hours for slow fermenters'
-        ],
-        'common_uses': [
-            'Isolation and differentiation of Gram-negative bacteria',
-            'Identification of lactose-fermenting organisms',
-            'Detection of coliform bacteria (especially E. coli with its characteristic metallic sheen)',
-            'Differentiation between lactose fermenters and non-fermenters like Shigella species'
-        ],
-        'images': [
-            {'src': '/static/images/plates/emb/emb_blank.jpg', 'caption': 'Uninoculated EMB Agar plate'},
-            {'src': '/static/images/plates/emb/emb_ecoli.jpg', 'caption': 'E. coli showing characteristic metallic green sheen'},
-            {'src': '/static/images/plates/emb/emb_mixed.jpg', 'caption': 'Mixed culture showing lactose fermenters (dark) and non-fermenters (colorless)'}
-        ],
-        'special_notes': [
-            'Interpretation requires experience due to subtle color differences',
-            'Slow lactose fermenters may not show typical reactions within 24 hours',
-            'Results should be interpreted with caution for organism identification',
-            'Color changes may be difficult to distinguish from media background'
-        ]
-    },
-    'mueller_hinton': {
-        'name': 'Mueller Hinton Agar',
-        'type': 'Susceptibility Testing Media',
-        'purpose': 'Standard medium for antimicrobial susceptibility testing (AST) of non-fastidious bacteria',
-        'composition': [
-            {'name': 'Beef Extract', 'description': 'Provides nutrients and growth factors'},
-            {'name': 'Acid Hydrolysate of Casein', 'description': 'Source of amino acids and proteins'},
-            {'name': 'Starch', 'description': 'Absorbs toxic metabolites and provides slow nutrient release'},
-            {'name': 'Agar', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'Standardized depth (4mm) for consistent diffusion',
-            'Low in sulfonamide, trimethoprim, and tetracycline inhibitors',
-            'Controlled calcium and magnesium content',
-            'pH standardized to 7.2-7.4 at room temperature'
-        ],
-        'common_uses': [
-            'Disk diffusion antibiotic susceptibility testing',
-            'E-test (MIC determination)',
-            'Quality control testing of antimicrobials',
-            'Standard medium for CLSI/EUCAST testing protocols'
-        ],
-        'images': [
-            {'src': '/static/images/plates/mueller_hinton/mh_blank.jpg', 'caption': 'Uninoculated Mueller Hinton Agar plate'},
-            {'src': '/static/images/plates/mueller_hinton/mh_ast.jpg', 'caption': 'Antibiotic susceptibility testing showing zones of inhibition'},
-            {'src': '/static/images/plates/mueller_hinton/mh_etest.jpg', 'caption': 'E-test on Mueller Hinton Agar'}
-        ]
-    },
-    'mannitol_salt': {
-        'name': 'Mannitol Salt Agar',
-        'type': 'Selective and Differential Media',
-        'purpose': 'Selective medium for isolation and differentiation of Staphylococci based on mannitol fermentation',
-        'composition': [
-            {'name': 'Mannitol', 'description': 'Fermentable carbohydrate for differentiation'},
-            {'name': 'Sodium Chloride (7.5%)', 'description': 'Selective agent inhibiting most bacteria except Staphylococci'},
-            {'name': 'Phenol Red', 'description': 'pH indicator showing mannitol fermentation'},
-            {'name': 'Peptones', 'description': 'Provides nutrients for bacterial growth'},
-            {'name': 'Agar', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'High salt concentration (7.5% NaCl) selects for Staphylococci',
-            'Mannitol fermentation produces yellow zones around colonies',
-            'Original medium color is red/pink',
-            'S. aureus typically produces yellow colonies with yellow zones'
-        ],
-        'common_uses': [
-            'Isolation of Staphylococci from clinical specimens',
-            'Differentiation of S. aureus (mannitol-positive) from other Staphylococci',
-            'Screening for pathogenic Staphylococci',
-            'Processing of nasal swabs for MRSA screening'
-        ],
-        'images': [
-            {'src': '/static/images/plates/mannitol_salt/msa_blank.jpg', 'caption': 'Uninoculated Mannitol Salt Agar plate'},
-            {'src': '/static/images/plates/mannitol_salt/msa_saureus.jpg', 'caption': 'S. aureus showing yellow colonies with yellow zones'},
-            {'src': '/static/images/plates/mannitol_salt/msa_mixed.jpg', 'caption': 'Mixed culture showing mannitol fermenters and non-fermenters'}
-        ]
-    },
-    'modified_thayer_martin': {
-        'name': 'Modified Thayer-Martin Agar',
-        'type': 'Enrichment and Selective Media',
-        'purpose': 'Isolation of N. gonorrhoeae and Neisseria meningitidis from specimens containing mixed microbiota',
-        'composition': [
-            {'name': 'Peptone Starch', 'description': 'Provides nutrients and growth factors'},
-            {'name': 'Amino Acids', 'description': 'Essential for bacterial growth'},
-            {'name': 'Glucose', 'description': 'Fermentable carbohydrate with lower concentration'},
-            {'name': 'Nucleotides', 'description': 'Supports nucleic acid synthesis'},
-            {'name': 'Chocolatized Blood', 'description': 'Enrichment component'},
-            {'name': 'Trimethoprim', 'description': 'Inhibits Proteus spp. to prevent swarming'},
-            {'name': 'Colistin', 'description': 'Inhibits other Gram-negative bacteria'},
-            {'name': 'Vancomycin', 'description': 'Inhibits Gram-positive bacteria'},
-            {'name': 'Nystatin', 'description': 'Inhibits yeast'}
-        ],
-        'characteristics': [
-            'Lower glucose and agar concentrations improve growth of fastidious organisms',
-            'Selective capacity due to added antibiotics'
-        ],
-        'common_uses': [
-            'Isolation of N. gonorrhoeae',
-            'Isolation of Neisseria meningitidis'
-        ],
-        'special_notes': [
-            'Martin-Lewis agar substitutes ansamycin for nystatin and has a higher concentration of vancomycin'
-        ]
-    },
-    'ccfa': {
-        'name': 'Cycloserine Cefoxitin Fructose Agar (CCFA)',
-        'type': 'Selective and Differential Media',
-        'purpose': 'Isolation and identification of Clostridioides difficile from fecal specimens',
-        'composition': [
-            {'name': 'Fructose', 'description': 'Main carbohydrate for fermentation by C. difficile'},
-            {'name': 'Neutral Red Indicator', 'description': 'Detects acid production from fructose fermentation (color change)'},
-            {'name': 'Cycloserine', 'description': 'Inhibits Gram-negative bacteria'},
-            {'name': 'Cefoxitin', 'description': 'Inhibits most Gram-positive bacteria (except C. difficile)'},
-            {'name': 'Agar Base', 'description': 'Provides nutrients and support for bacterial growth'}
-        ],
-        'characteristics': [
-            'C. difficile ferments fructose, producing acid which turns the medium yellow',
-            'Colonies appear yellow, irregular, and have a characteristic horse manure-like odor',
-            'Not completely specific for C. difficile - further confirmation required',
-            'Requires toxigenic testing (PCR, ELISA for toxins A & B) for confirmation'
-        ],
-        'common_uses': [
-            'Primary isolation of C. difficile from stool samples in suspected pseudomembranous colitis',
-            'Isolation in cases of C. difficile infection (CDI)',
-            'Differentiation of C. difficile from other Clostridium species based on fructose fermentation and antibiotic resistance'
-        ],
-        'special_notes': [
-            'Some non-C. difficile Clostridium species may also grow',
-            'Does not differentiate toxigenic from non-toxigenic strains—additional testing needed for toxin detection',
-            'CCFA has largely been replaced by chromogenic media and molecular methods'
-        ]
-    },
-    'xld': {
-        'name': 'Xylose-Lysine-Deoxycholate (XLD) Agar',
-        'type': 'Selective and Differential Media',
-        'purpose': 'Used for the isolation and differentiation of Shigella species and Salmonella species from other non-pathogenic enteric bacteria',
-        'composition': [
-            {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that inhibits gram-positive organisms and many non-enteric gram-negative bacilli'},
-            {'name': 'Xylose', 'description': 'Fermentable carbohydrate for differentiation'},
-            {'name': 'Lysine', 'description': 'Amino acid for detecting lysine decarboxylation'},
-            {'name': 'Lactose and Sucrose', 'description': 'Additional fermentable carbohydrates for differentiation'},
-            {'name': 'Phenol Red', 'description': 'pH indicator that detects acid production from carbohydrate fermentation'},
-            {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'H₂S indicator system'},
-            {'name': 'Agar Base', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'Base medium appears pink to red in color',
-            'Differential characteristics based on:',
-            '- Carbohydrate fermentation (xylose, lactose, sucrose)',
-            '- Lysine decarboxylation',
-            '- H₂S production',
-            'Colony appearances:',
-            '- Shigella spp.: Colorless colonies (red, same as medium)',
-            '- Salmonella spp.: Colorless colonies with black centers (H₂S production)',
-            '- Non-pathogenic fermenters: Yellow colonies'
-        ],
-        'common_uses': [
-            'Isolation and identification of Shigella species',
-            'Isolation and identification of Salmonella species',
-            'Differentiation of pathogenic enteric bacteria from non-pathogenic organisms',
-            'Processing of stool specimens for enteric pathogens'
-        ],
-        'special_notes': [
-            'Salmonella colonies remain colorless despite xylose fermentation due to lysine decarboxylation raising pH',
-            'Black center in Salmonella colonies is due to H₂S production',
-            'Yellow colonies typically indicate non-pathogenic organisms that ferment one or more of the carbohydrates'
-        ],
-        'images': [
-            {'src': '/static/images/plates/xld/xld_blank.jpg', 'caption': 'Uninoculated XLD Agar plate'},
-            {'src': '/static/images/plates/xld/xld_salmonella.jpg', 'caption': 'Salmonella species showing characteristic black-centered colonies'},
-            {'src': '/static/images/plates/xld/xld_shigella.jpg', 'caption': 'Shigella species showing colorless colonies'}
-        ]
-    },
-    'sab_dex': {
-        'name': 'Sabouraud Dextrose Agar (SDA)',
-        'type': 'General Purpose & Selective Medium',
-        'purpose': 'Used for the isolation and cultivation of fungi, including yeasts and molds, and supports the growth of dermatophytes, Candida species, and other pathogenic/non-pathogenic fungi',
-        'composition': [
-            {'name': 'Dextrose (40g/L)', 'description': 'Provides a rich carbohydrate source to support fungal growth'},
-            {'name': 'Peptones (10g/L)', 'description': 'Supply nitrogen, vitamins, and amino acids for fungal metabolism'},
-            {'name': 'Agar (15g/L)', 'description': 'Solidifying agent'},
-            {'name': 'pH Adjustment', 'description': 'Low pH (5.6) inhibits bacterial growth while promoting fungal growth'},
-            {'name': 'Optional Antibiotics', 'description': 'Chloramphenicol or Gentamicin can be added in selective formulations to suppress bacterial contamination'}
-        ],
-        'characteristics': [
-            'Appears pale yellow to light amber before inoculation',
-            'Fungi grow as filamentous colonies (molds) or creamy, smooth colonies (yeasts)',
-            'Supports a broad range of fungal species, including:',
-            '- Candida spp. (e.g., C. albicans, C. glabrata, C. krusei)',
-            '- Aspergillus spp.',
-            '- Trichophyton spp. (causes dermatophytosis)',
-            '- Microsporum spp.',
-            '- Epidermophyton spp.'
-        ],
-        'common_uses': [
-            'Primary isolation of yeasts and molds from clinical specimens (skin, nails, sputum, vaginal swabs)',
-            'Diagnosis of fungal infections, including dermatophytosis, candidiasis, and systemic mycoses',
-            'Environmental and food microbiology applications for detecting fungal contaminants'
-        ],
-        'limitations': [
-            'Non-specific for Candida identification (CHROMagar Candida is preferred for species differentiation)',
-            'May not fully inhibit bacterial growth unless antibiotics are added',
-            'Slow-growing fungi may require prolonged incubation (up to 4 weeks at 25–30°C)'
-        ],
-        'images': [
-            {'src': '/static/images/plates/sab_dex/sda_blank.jpg', 'caption': 'Uninoculated Sabouraud Dextrose Agar plate'},
-            {'src': '/static/images/plates/sab_dex/sda_candida.jpg', 'caption': 'Candida species growth showing typical yeast colonies'},
-            {'src': '/static/images/plates/sab_dex/sda_mold.jpg', 'caption': 'Filamentous fungal growth on SDA'}
-        ]
-    },
-    'chromagar_candida': {
-        'name': 'CHROMagar Candida',
-        'type': 'Selective and Differential Medium',
-        'purpose': 'Used for the isolation, differentiation, and presumptive identification of Candida species based on colony color resulting from enzymatic reactions with chromogenic substrates',
-        'composition': [
-            {'name': 'Peptones', 'description': 'Provide essential nutrients for fungal growth'},
-            {'name': 'Chromogenic Substrates', 'description': 'React with species-specific enzymes to produce characteristic colony colors'},
-            {'name': 'Chloramphenicol', 'description': 'Inhibits bacterial growth, ensuring fungal isolation'},
-            {'name': 'Agar Base', 'description': 'Solidifying agent to support colony formation'}
-        ],
-        'characteristics': [
-            'Appears light pink before inoculation',
-            'Different Candida species produce distinct colony colors:',
-            '- C. albicans: Green colonies',
-            '- C. tropicalis: Blue to metallic blue colonies',
-            '- C. krusei: Pink, fuzzy colonies',
-            '- C. glabrata: Pale to purple colonies',
-            '- C. parapsilosis: Off-white to pale pink colonies',
-            'Rapid differentiation within 24–48 hours of incubation',
-            'Reduces the need for additional biochemical tests like germ tube test or sugar assimilation tests'
-        ],
-        'common_uses': [
-            'Primary isolation of Candida species from clinical samples (e.g., urine, blood, sputum, vaginal swabs)',
-            'Differentiation of major Candida species without molecular testing',
-            'Guiding antifungal therapy, as species like C. krusei and C. glabrata may exhibit fluconazole resistance'
-        ],
-        'images': [
-            {'src': '/static/images/plates/chromagar/chrom_blank.jpg', 'caption': 'Uninoculated CHROMagar Candida plate'},
-            {'src': '/static/images/plates/chromagar/chrom_mixed.jpg', 'caption': 'Mixed Candida species showing characteristic colors'},
-            {'src': '/static/images/plates/chromagar/chrom_albicans.jpg', 'caption': 'C. albicans showing characteristic green colonies'}
-        ]
-    }
-}
-
-# Add plate image mapping
-PLATE_IMAGES = {
-    'e_coli': {
-        'mac_conkey': [
-            {
-                'src': '/static/images/organisms/ecoli/e_coli_mac_1.jpg',
-                'caption': 'E. coli on MacConkey Agar - Typical pink colonies (lactose fermenter)'
-            },
-            {
-                'src': '/static/images/organisms/ecoli/e_coli_mac_2.jpg',
-                'caption': 'E. coli on MacConkey Agar - Close-up view showing bile precipitation'
-            },
-            {
-                'src': '/static/images/organisms/ecoli/e_coli_mac_3.jpg',
-                'caption': 'E. coli on MacConkey Agar - Mixed culture showing distinct colonies'
-            }
-        ],
-        'emb': [
-            {
-                'src': '/static/images/organisms/ecoli/e_coli_emb_1.jpg',
-                'caption': 'E. coli on EMB Agar - Characteristic metallic sheen'
-            }
-        ],
-        'blood_agar': [
-            {
-                'src': '/static/images/organisms/ecoli/e_coli_blood_1.jpg',
-                'caption': 'E. coli on Blood Agar - Grey-white colonies'
-            }
-        ]
-    },
-    's_aureus': {
-        'mannitol_salt': [
-            {
-                'src': 's_aureus_msa_1.jpg',
-                'caption': 'S. aureus on MSA - Yellow colonies with yellow zones'
-            }
-        ],
-        'blood_agar': [
-            {
-                'src': 's_aureus_blood_1.jpg',
-                'caption': 'S. aureus on Blood Agar - Golden colonies with beta-hemolysis'
-            }
-        ]
-    },
-    'p_aeruginosa': {
-        'mueller_hinton': [
-            {
-                'src': 'p_aeruginosa_mh.jpg',
-                'caption': 'P. aeruginosa on Mueller Hinton Agar - Blue-green colonies with characteristic fluorescence'
-            }
-        ],
-        'blood_agar': [
-            {
-                'src': 'p_aeruginosa_blood.jpg',
-                'caption': 'P. aeruginosa on Blood Agar - Blue-green colonies with beta-hemolysis'
-            }
-        ]
-    },
-    'k_pneumoniae': {
-        'mac_conkey': [
-            {
-                'src': 'k_pneumoniae_mac.jpg',
-                'caption': 'K. pneumoniae on MacConkey Agar - Large, mucoid pink colonies'
-            }
-        ],
-        'blood_agar': [
-            {
-                'src': 'k_pneumoniae_blood.jpg',
-                'caption': 'K. pneumoniae on Blood Agar - Large, mucoid grey colonies'
-            }
-        ]
-    },
-    's_pneumoniae': {
-        'blood_agar': [
-            {
-                'src': 's_pneumoniae_blood.jpg',
-                'caption': 'S. pneumoniae on Blood Agar - Small colonies with alpha-hemolysis (green zone)'
-            }
-        ]
-    },
-    'n_gonorrhoeae': {
-        'chocolate_agar': [
-            {
-                'src': 'n_gonorrhoeae_choc.jpg',
-                'caption': 'N. gonorrhoeae on Chocolate Agar - Small, grey to white colonies'
-            }
-        ],
-        'thayer_martin': [
-            {
-                'src': 'n_gonorrhoeae_tm.jpg',
-                'caption': 'N. gonorrhoeae on Thayer-Martin Agar - Small, grey colonies on selective media'
-            }
-        ]
-    },
-    'c_difficile': {
-        'ccfa': [
-            {
-                'src': 'c_difficile_ccfa.jpg',
-                'caption': 'C. difficile on CCFA - Yellow colonies with ground-glass appearance'
-            }
-        ]
-    },
-    'h_influenzae': {
-        'chocolate_agar': [
-            {
-                'src': '/static/images/organisms/hinfluenzae/choc_growth1.jpg',
-                'caption': 'H. influenzae on Chocolate Agar - Small, transparent colonies (Example 1)'
-            },
-            {
-                'src': '/static/images/organisms/hinfluenzae/choc_growth2.jpg',
-                'caption': 'H. influenzae on Chocolate Agar - Small, transparent colonies (Example 2)'
-            }
-        ]
-    },
-    'l_pneumophila': {
-        'bcye': [
-            {
-                'src': 'l_pneumophila_bcye.jpg',
-                'caption': 'L. pneumophila on BCYE - Grey-white, glistening colonies'
-            }
-        ]
-    },
-    'aspergillus': {
-        'sab_dex': [
-            {
-                'src': 'aspergillus_sda.jpg',
-                'caption': 'Aspergillus species on Sabouraud Dextrose Agar - Filamentous colonies with characteristic coloration'
-            }
-        ]
-    },
-    'c_albicans': {
-        'sab_dex': [
-            {
-                'src': 'c_albicans_sda.jpg',
-                'caption': 'C. albicans on Sabouraud Dextrose Agar - Cream colored, smooth colonies'
-            }
-        ],
-        'chrom_agar': [
-            {
-                'src': 'c_albicans_chrom.jpg',
-                'caption': 'C. albicans on CHROMagar - Characteristic green colonies'
-            }
-        ]
-    },
-    'c_auris': {
-        'sab_dex': [
-            {
-                'src': 'c_auris_sda.jpg',
-                'caption': 'C. auris on Sabouraud Dextrose Agar - White to cream colored colonies'
-            }
-        ],
-        'chrom_agar': [
-            {
-                'src': 'c_auris_chrom.jpg',
-                'caption': 'C. auris on CHROMagar - Pale to light pink colonies'
-            }
-        ]
-    },
-    'a_baumannii': {
-        'blood_agar': [
-            {
-                'src': 'a_baumannii_blood.jpg',
-                'caption': 'A. baumannii on Blood Agar - White to cream-colored, non-hemolytic colonies'
-            }
-        ],
-        'mac_conkey': [
-            {
-                'src': 'a_baumannii_mac.jpg',
-                'caption': 'A. baumannii on MacConkey Agar - Pink to mauve colonies (non-lactose fermenter)'
-            }
-        ]
-    }
-}
-
-# Media example images mapping
-MEDIA_EXAMPLE_IMAGES = {
-    'emb': [
-        {
-            'src': '/static/images/plates/emb/emb_blank.jpg',
-            'caption': 'Uninoculated EMB Agar plate'
-        },
-        {
-            'src': '/static/images/plates/emb/emb_ecoli_metallic.jpg',
-            'caption': 'E. coli showing characteristic metallic green sheen on EMB'
-        },
-        {
-            'src': '/static/images/plates/emb/emb_mixed_culture.jpg',
-            'caption': 'Mixed culture showing lactose fermenters (dark purple/metallic) and non-fermenters (colorless)'
-        }
-    ],
-    'blood_agar': [
-        {
-            'src': '/static/images/plates/blood/blood_blank.jpg',
-            'caption': 'Uninoculated Blood Agar plate'
-        },
-        {
-            'src': '/static/images/plates/blood/blood_alpha_hemolysis.jpg',
-            'caption': 'Example of alpha hemolysis on Blood Agar'
-        },
-        {
-            'src': '/static/images/plates/blood/blood_beta_hemolysis.jpg',
-            'caption': 'Example of beta hemolysis on Blood Agar'
-        }
-    ],
-    'mac_conkey': [
-        {
-            'src': '/static/images/plates/mac/mac_blank.jpg',
-            'caption': 'Uninoculated MacConkey Agar plate'
-        },
-        {
-            'src': '/static/images/plates/mac/mac_lactose_pos.jpg',
-            'caption': 'Example of lactose-fermenting colonies (pink/red)'
-        },
-        {
-            'src': '/static/images/plates/mac/mac_lactose_neg.jpg',
-            'caption': 'Example of non-lactose-fermenting colonies (colorless)'
-        }
-    ],
-    'chocolate_agar': [
-        {
-            'src': '/static/images/plates/chocolate_agar/Haemophilus_influenzae_colony_morphology_on_chocolate_agar.jpg',
-            'caption': 'Haemophilus_influenzae_colony_morphology_on_chocolate_agar.jpg'
-        },
-        {
-            'src': '/static/images/plates/chocolate_agar/choc_growth1.jpg',
-            'caption': 'choc_growth1.jpg'
-        },
-        {
-            'src': '/static/images/plates/chocolate_agar/choc_growth2.jpg',
-            'caption': 'choc_growth2.jpg'
-        }
-    ]
-}
-
-# Dictionary containing information about different culture media
-MEDIA_INFO = {
-    'bcye': {
-        'name': 'Buffered Charcoal Yeast Extract (BCYE) Agar',
-        'type': 'Selective and Enriched Medium',
-        'purpose': 'Used for the isolation of Legionella species, particularly Legionella pneumophila, from clinical and environmental samples',
-        'composition': [
-            {'name': 'Yeast Extract', 'description': 'Provides essential nutrients'},
-            {'name': 'Activated Charcoal', 'description': 'Detoxifies peroxides and reactive compounds'},
-            {'name': 'L-Cysteine', 'description': 'Essential for Legionella growth'},
-            {'name': 'Ferric Pyrophosphate', 'description': 'Essential for Legionella growth'},
-            {'name': 'α-Ketoglutarate', 'description': 'Enhances Legionella proliferation'},
-            {'name': 'Optional Antibiotics', 'description': 'Polymyxin B, anisomycin, vancomycin to suppress competing flora'}
-        ],
-        'characteristics': [
-            'Appears black or dark gray due to activated charcoal',
-            'Supports the growth of fastidious Legionella species, which do not grow on standard media',
-            'Can be non-selective or selective depending on whether antibiotics are added'
-        ],
-        'common_uses': [
-            'Isolation of Legionella pneumophila from respiratory specimens (e.g., sputum, BAL)',
-            'Detection of Legionella from environmental sources (e.g., water systems, cooling towers)',
-            'Used in conjunction with serological or molecular methods for definitive identification'
-        ],
-        'special_notes': [
-            'Does not differentiate Legionella species',
-            'Requires prolonged incubation (3–7 days) at 35–37°C in a humidified atmosphere'
-        ],
-        'images': [
-            {'src': '/static/images/plates/bcye/bcye_blank.jpg', 'caption': 'Uninoculated BCYE Agar plate'},
-            {'src': '/static/images/plates/bcye/bcye_growth.jpg', 'caption': 'Legionella pneumophila growth on BCYE Agar'}
-        ]
-    },
-    'blood_agar': {
-        'name': 'Blood Agar',
-        'type': 'General Purpose/Enriched Media',
-        'purpose': 'Used for culturing fastidious organisms and detecting hemolytic patterns',
-        'composition': [
-            {'name': 'Blood', 'description': '5-10% sheep or horse blood'},
-            {'name': 'Peptones', 'description': 'Provides nitrogen, vitamins, and amino acids'},
-            {'name': 'Sodium Chloride', 'description': 'Maintains osmotic balance'},
-            {'name': 'Agar', 'description': 'Solidifying agent'}
-        ],
-        'characteristics': [
-            'Appears red-brown in color',
-            'Can observe different types of hemolysis (alpha, beta, gamma)',
-            'Supports growth of most clinically significant bacteria'
-        ],
-        'common_uses': [
-            'Isolation of fastidious organisms',
-            'Detection of hemolytic patterns in Streptococci and other bacteria',
-            'Primary isolation medium for clinical specimens'
-        ],
-        'images': [
-            {'src': '/static/images/plates/blood/blood_blank.jpg', 'caption': 'Uninoculated Blood Agar plate'},
-            {'src': '/static/images/plates/blood/blood_beta.jpg', 'caption': 'Beta hemolysis on Blood Agar'},
-            {'src': '/static/images/plates/blood/blood_alpha.jpg', 'caption': 'Alpha hemolysis on Blood Agar'}
-        ]
-    },
-    'mac_conkey': {
-        'name': 'MacConkey Agar',
-        'type': 'Selective and Differential Media',
-        'purpose': 'Selective for Gram-negative bacteria and differentiates lactose fermenters from non-fermenters',
-        'composition': [
-            {'name': 'Peptones', 'description': 'Provides nitrogen and other nutrients'},
-            {'name': 'Lactose', 'description': 'Fermentable carbohydrate'},
-            {'name': 'Bile Salts', 'description': 'Inhibits growth of Gram-positive organisms'},
-            {'name': 'Neutral Red', 'description': 'pH indicator that turns red in acid conditions'},
-            {'name': 'Crystal Violet', 'description': 'Additional inhibitor of Gram-positive organisms'}
-        ],
-        'characteristics': [
-            'Appears pink to red in color',
-            'Lactose fermenters produce pink/red colonies',
-            'Non-lactose fermenters produce colorless colonies',
-            'Selective against Gram-positive organisms'
-        ],
-        'common_uses': [
-            'Isolation of Gram-negative enteric bacteria',
-            'Differentiation of lactose-fermenting from non-lactose-fermenting bacteria',
-            'Screening for potential pathogens in clinical specimens'
-        ],
-        'images': [
-            {'src': '/static/images/plates/mac/mac_blank.jpg', 'caption': 'Uninoculated MacConkey Agar plate'},
-            {'src': '/static/images/plates/mac/mac_ecoli.jpg', 'caption': 'E. coli growth (pink colonies)'},
-            {'src': '/static/images/plates/mac/mac_mixed.jpg', 'caption': 'Mixed growth showing lactose and non-lactose fermenters'}
+            {'src': '/static/images/plates/mac/e_coli_mac_1.jpg', 'caption': 'E. coli on MacConkey Agar - Example 1'},
+            {'src': '/static/images/plates/mac/e_coli_mac_2.jpg', 'caption': 'E. coli on MacConkey Agar - Example 2'},
+            {'src': '/static/images/plates/mac/e_coli_mac_3.jpg', 'caption': 'E. coli on MacConkey Agar - Example 3'}
         ]
     },
     'chocolate_agar': {
@@ -1617,6 +1012,7 @@ GROWTH_RESULTS = {
         'mac_conkey': {'result': 'GOOD', 'description': 'Large, mucoid pink colonies (lactose fermenter)'},
         'emb': {'result': 'GOOD', 'description': 'Large, mucoid colonies with dark centers'},
         'blood_agar': {'result': 'GOOD', 'description': 'Large, grayish-white mucoid colonies'},
+        'chocolate_agar': {'result': 'VARIABLE', 'description': 'While growth is possible, chocolate agar is not recommended for primary isolation. MacConkey or EMB agar are preferred as they allow better differentiation of K. pneumoniae based on lactose fermentation and colony characteristics.', 'note': 'For optimal isolation and identification, use MacConkey Agar (shows lactose fermentation) or EMB Agar (shows mucoid colonies with dark centers).'},
         'sab_dex': {
             'result': 'UNKNOWN',
             'description': 'Growth characteristics are not well-documented for this combination.',
@@ -1649,6 +1045,11 @@ GROWTH_RESULTS = {
             'description': 'Poor or no growth expected.',
             'note': 'C. difficile requires selective media (CCFA) for isolation from clinical specimens. CCFA contains cycloserine and cefoxitin to inhibit competing flora while allowing C. difficile to grow.'
         }
+    },
+    'a_baumannii': {
+        'blood_agar': {'result': 'GOOD', 'description': 'Smooth, dome-shaped colonies with entire margins. White to cream-colored, opaque, 1.5-2.5 mm in diameter after 24 hours. Non-hemolytic.'},
+        'mac_conkey': {'result': 'GOOD', 'description': 'Smooth, slightly domed colonies. Pink to mauve (non-lactose fermenter), 1-2 mm in diameter.'},
+        'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. Blood Agar or MacConkey Agar recommended for optimal isolation and identification of A. baumannii.'}
     }
 }
 
@@ -1684,6 +1085,375 @@ MEDIA_NAMES = {
     'chrom_agar': 'CHROMagar Candida'
 }
 
+# Individual media dictionaries
+blood_agar = {
+    'name': 'Blood Agar',
+    'type': 'General Purpose/Enriched Media',
+    'purpose': 'Used for culturing fastidious organisms and detecting hemolytic patterns',
+    'composition': [
+        {'name': 'Blood', 'description': '5-10% sheep or horse blood'},
+        {'name': 'Peptones', 'description': 'Provides nitrogen, vitamins, and amino acids'},
+        {'name': 'Sodium Chloride', 'description': 'Maintains osmotic balance'},
+        {'name': 'Agar', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'Appears red-brown in color',
+        'Can observe different types of hemolysis (alpha, beta, gamma)',
+        'Supports growth of most clinically significant bacteria'
+    ],
+    'common_uses': [
+        'Isolation of fastidious organisms',
+        'Detection of hemolytic patterns in Streptococci and other bacteria',
+        'Primary isolation medium for clinical specimens'
+    ]
+}
+
+mac_conkey = {
+    'name': 'MacConkey Agar',
+    'type': 'Selective and Differential Media',
+    'purpose': 'Selective for Gram-negative bacteria and differentiates lactose fermenters from non-fermenters',
+    'composition': [
+        {'name': 'Peptones', 'description': 'Provides nitrogen and other nutrients'},
+        {'name': 'Lactose', 'description': 'Fermentable carbohydrate'},
+        {'name': 'Bile Salts', 'description': 'Inhibits growth of Gram-positive organisms'},
+        {'name': 'Neutral Red', 'description': 'pH indicator that turns red in acid conditions'},
+        {'name': 'Crystal Violet', 'description': 'Additional inhibitor of Gram-positive organisms'}
+    ],
+    'characteristics': [
+        'Appears pink to red in color',
+        'Lactose fermenters produce pink/red colonies',
+        'Non-lactose fermenters produce colorless colonies',
+        'Selective against Gram-positive organisms'
+    ],
+    'common_uses': [
+        'Isolation of Gram-negative enteric bacteria',
+        'Differentiation of lactose-fermenting from non-lactose-fermenting bacteria',
+        'Screening for potential pathogens in clinical specimens'
+    ]
+}
+
+emb = {
+    'name': 'Eosin Methylene Blue (EMB) Agar',
+    'type': 'Selective and Differential Media',
+    'purpose': 'Primary selective and differential medium for isolation and differentiation of Gram-negative bacteria based on lactose fermentation',
+    'composition': [
+        {'name': 'Eosin Y', 'description': 'Inhibits growth of Gram-positive bacteria and acts as pH indicator'},
+        {'name': 'Methylene Blue', 'description': 'Inhibits Gram-positive bacteria and serves as pH indicator'},
+        {'name': 'Lactose', 'description': 'Fermentable carbohydrate for differentiation'},
+        {'name': 'Peptone', 'description': 'Provides nitrogen and nutrients'},
+        {'name': 'Agar', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'Lactose fermenters appear dark purple to black, or with distinctive green metallic sheen',
+        'Non-lactose fermenters remain colorless and translucent',
+        'Selective against Gram-positive bacteria'
+    ],
+    'common_uses': [
+        'Isolation and differentiation of Gram-negative bacteria',
+        'Identification of lactose-fermenting organisms',
+        'Detection of coliform bacteria (especially E. coli with its characteristic metallic sheen)'
+    ]
+}
+
+chocolate_agar = {
+    'name': 'Chocolate Agar',
+    'type': 'Enriched Media',
+    'purpose': 'Supports the growth of fastidious organisms, especially Haemophilus and Neisseria species',
+    'composition': [
+        {'name': 'Hemoglobin', 'description': 'Provides X factor (hemin) for growth'},
+        {'name': 'NAD (V factor)', 'description': 'Essential for the growth of Haemophilus species'},
+        {'name': 'Peptones', 'description': 'Provides nutrients for bacterial growth'},
+        {'name': 'Agar', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'Enriched with hemoglobin and NAD',
+        'Brown color due to lysed red blood cells',
+        'Supports growth of fastidious organisms'
+    ],
+    'common_uses': [
+        'Isolation of Haemophilus influenzae',
+        'Isolation of Neisseria gonorrhoeae',
+        'Culturing of other fastidious organisms'
+    ]
+}
+
+mueller_hinton = {
+    'name': 'Mueller Hinton Agar',
+    'type': 'Susceptibility Testing Media',
+    'purpose': 'Standard medium for antimicrobial susceptibility testing (AST) of non-fastidious bacteria',
+    'composition': [
+        {'name': 'Beef Extract', 'description': 'Provides nutrients and growth factors'},
+        {'name': 'Acid Hydrolysate of Casein', 'description': 'Source of amino acids and proteins'},
+        {'name': 'Starch', 'description': 'Absorbs toxic metabolites and provides slow nutrient release'},
+        {'name': 'Agar', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'Standardized depth (4mm) for consistent diffusion',
+        'Low in sulfonamide, trimethoprim, and tetracycline inhibitors',
+        'Controlled calcium and magnesium content',
+        'pH standardized to 7.2-7.4 at room temperature'
+    ],
+    'common_uses': [
+        'Disk diffusion antibiotic susceptibility testing',
+        'E-test (MIC determination)',
+        'Quality control testing of antimicrobials'
+    ]
+}
+
+mannitol_salt = {
+    'name': 'Mannitol Salt Agar',
+    'type': 'Selective and Differential Media',
+    'purpose': 'Selective medium for isolation and differentiation of Staphylococci based on mannitol fermentation',
+    'composition': [
+        {'name': 'Mannitol', 'description': 'Fermentable carbohydrate for differentiation'},
+        {'name': 'Sodium Chloride (7.5%)', 'description': 'Selective agent inhibiting most bacteria except Staphylococci'},
+        {'name': 'Phenol Red', 'description': 'pH indicator showing mannitol fermentation'},
+        {'name': 'Peptones', 'description': 'Provides nutrients for bacterial growth'},
+        {'name': 'Agar', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'High salt concentration (7.5% NaCl) selects for Staphylococci',
+        'Mannitol fermentation produces yellow zones around colonies',
+        'Original medium color is red/pink',
+        'S. aureus typically produces yellow colonies with yellow zones'
+    ],
+    'common_uses': [
+        'Isolation of Staphylococci from clinical specimens',
+        'Differentiation of S. aureus (mannitol-positive) from other Staphylococci',
+        'Screening for pathogenic Staphylococci'
+    ]
+}
+
+modified_thayer_martin = {
+    'name': 'Modified Thayer-Martin Agar',
+    'type': 'Enrichment and Selective Media',
+    'purpose': 'Isolation of N. gonorrhoeae and Neisseria meningitidis from specimens containing mixed microbiota',
+    'composition': [
+        {'name': 'Peptone Starch', 'description': 'Provides nutrients and growth factors'},
+        {'name': 'Amino Acids', 'description': 'Essential for bacterial growth'},
+        {'name': 'Glucose', 'description': 'Fermentable carbohydrate with lower concentration'},
+        {'name': 'Nucleotides', 'description': 'Supports nucleic acid synthesis'},
+        {'name': 'Chocolatized Blood', 'description': 'Enrichment component'},
+        {'name': 'Trimethoprim', 'description': 'Inhibits Proteus spp. to prevent swarming'},
+        {'name': 'Colistin', 'description': 'Inhibits other Gram-negative bacteria'},
+        {'name': 'Vancomycin', 'description': 'Inhibits Gram-positive bacteria'},
+        {'name': 'Nystatin', 'description': 'Inhibits yeast'}
+    ],
+    'characteristics': [
+        'Lower glucose and agar concentrations improve growth of fastidious organisms',
+        'Selective capacity due to added antibiotics'
+    ],
+    'common_uses': [
+        'Isolation of N. gonorrhoeae',
+        'Isolation of Neisseria meningitidis'
+    ]
+}
+
+ccfa = {
+    'name': 'Cycloserine Cefoxitin Fructose Agar (CCFA)',
+    'type': 'Selective and Differential Media',
+    'purpose': 'Isolation and identification of Clostridioides difficile from fecal specimens',
+    'composition': [
+        {'name': 'Fructose', 'description': 'Main carbohydrate for fermentation by C. difficile'},
+        {'name': 'Neutral Red Indicator', 'description': 'Detects acid production from fructose fermentation'},
+        {'name': 'Cycloserine', 'description': 'Inhibits Gram-negative bacteria'},
+        {'name': 'Cefoxitin', 'description': 'Inhibits most Gram-positive bacteria (except C. difficile)'},
+        {'name': 'Agar Base', 'description': 'Provides nutrients and support for bacterial growth'}
+    ],
+    'characteristics': [
+        'C. difficile ferments fructose, producing acid which turns the medium yellow',
+        'Colonies appear yellow, irregular, and have a characteristic horse manure-like odor',
+        'Not completely specific for C. difficile - further confirmation required'
+    ],
+    'common_uses': [
+        'Primary isolation of C. difficile from stool samples',
+        'Isolation in cases of C. difficile infection (CDI)',
+        'Differentiation of C. difficile from other Clostridium species'
+    ]
+}
+
+bcye = {
+    'name': 'Buffered Charcoal Yeast Extract (BCYE) Agar',
+    'type': 'Selective and Enriched Medium',
+    'purpose': 'Used for the isolation of Legionella species, particularly Legionella pneumophila',
+    'composition': [
+        {'name': 'Yeast Extract', 'description': 'Provides essential nutrients'},
+        {'name': 'Activated Charcoal', 'description': 'Detoxifies peroxides and reactive compounds'},
+        {'name': 'L-Cysteine', 'description': 'Essential for Legionella growth'},
+        {'name': 'Ferric Pyrophosphate', 'description': 'Essential for Legionella growth'},
+        {'name': 'α-Ketoglutarate', 'description': 'Enhances Legionella proliferation'}
+    ],
+    'characteristics': [
+        'Appears black or dark gray due to activated charcoal',
+        'Supports the growth of fastidious Legionella species',
+        'Can be non-selective or selective depending on whether antibiotics are added'
+    ],
+    'common_uses': [
+        'Isolation of Legionella pneumophila from respiratory specimens',
+        'Detection of Legionella from environmental sources',
+        'Used in conjunction with serological or molecular methods for identification'
+    ]
+}
+
+sab_dex = {
+    'name': 'Sabouraud Dextrose Agar (SDA)',
+    'type': 'General Purpose & Selective Medium',
+    'purpose': 'Used for the isolation and cultivation of fungi, including yeasts and molds',
+    'composition': [
+        {'name': 'Dextrose (40g/L)', 'description': 'Provides a rich carbohydrate source'},
+        {'name': 'Peptones (10g/L)', 'description': 'Supply nitrogen, vitamins, and amino acids'},
+        {'name': 'Agar (15g/L)', 'description': 'Solidifying agent'},
+        {'name': 'pH Adjustment', 'description': 'Low pH (5.6) inhibits bacterial growth'}
+    ],
+    'characteristics': [
+        'Appears pale yellow to light amber before inoculation',
+        'Fungi grow as filamentous colonies (molds) or creamy, smooth colonies (yeasts)',
+        'Supports a broad range of fungal species'
+    ],
+    'common_uses': [
+        'Primary isolation of yeasts and molds from clinical specimens',
+        'Diagnosis of fungal infections',
+        'Environmental and food microbiology applications'
+    ]
+}
+
+chromagar_candida = {
+    'name': 'CHROMagar Candida',
+    'type': 'Selective and Differential Medium',
+    'purpose': 'Used for the isolation and differentiation of Candida species',
+    'composition': [
+        {'name': 'Peptones', 'description': 'Provide essential nutrients for fungal growth'},
+        {'name': 'Chromogenic Substrates', 'description': 'React with species-specific enzymes'},
+        {'name': 'Chloramphenicol', 'description': 'Inhibits bacterial growth'},
+        {'name': 'Agar Base', 'description': 'Solidifying agent'}
+    ],
+    'characteristics': [
+        'Appears light pink before inoculation',
+        'Different Candida species produce distinct colony colors',
+        'Rapid differentiation within 24–48 hours'
+    ],
+    'common_uses': [
+        'Primary isolation of Candida species from clinical samples',
+        'Differentiation of major Candida species',
+        'Guiding antifungal therapy'
+    ]
+}
+
+xld = {
+    'name': 'Xylose-Lysine-Deoxycholate (XLD) Agar',
+    'type': 'Selective and Differential Media',
+    'purpose': 'Used for the isolation and differentiation of Shigella and Salmonella species',
+    'composition': [
+        {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that inhibits gram-positive organisms'},
+        {'name': 'Xylose', 'description': 'Fermentable carbohydrate for differentiation'},
+        {'name': 'Lysine', 'description': 'Amino acid for detecting lysine decarboxylation'},
+        {'name': 'Lactose and Sucrose', 'description': 'Additional fermentable carbohydrates'},
+        {'name': 'Phenol Red', 'description': 'pH indicator'},
+        {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'H₂S indicator system'}
+    ],
+    'characteristics': [
+        'Base medium appears pink to red in color',
+        'Differential characteristics based on carbohydrate fermentation and H₂S production',
+        'Shigella: Colorless colonies',
+        'Salmonella: Colorless colonies with black centers'
+    ],
+    'common_uses': [
+        'Isolation and identification of Shigella species',
+        'Isolation and identification of Salmonella species',
+        'Processing of stool specimens for enteric pathogens'
+    ]
+}
+
+# Consolidated media information dictionary
+MEDIA_INFO = {
+    'blood_agar': blood_agar,
+    'mac_conkey': mac_conkey,
+    'emb': emb,
+    'chocolate_agar': chocolate_agar,
+    'mueller_hinton': mueller_hinton,
+    'mannitol_salt': mannitol_salt,
+    'modified_thayer_martin': modified_thayer_martin,
+    'ccfa': ccfa,
+    'bcye': bcye,
+    'sab_dex': sab_dex,
+    'chromagar_candida': chromagar_candida,
+    'xld': xld
+}
+
+def get_images_from_directory(media_type):
+    """
+    Scans the plates directory for images related to a specific media type.
+    Returns a list of dictionaries containing image information.
+    """
+    base_path = os.path.join('app', 'static', 'images', 'plates', media_type)
+    images = []
+    
+    if os.path.exists(base_path):
+        for filename in os.listdir(base_path):
+            if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.jfif')):
+                # Convert filename to title by:
+                # 1. Remove extension
+                # 2. Replace underscores and hyphens with spaces
+                # 3. Title case the result
+                caption = os.path.splitext(filename)[0]  # Remove extension
+                caption = caption.replace('_', ' ').replace('-', ' ')  # Replace separators
+                caption = caption.title()  # Convert to title case
+                
+                images.append({
+                    'src': f'/static/images/plates/{media_type}/{filename}',
+                    'caption': caption
+                })
+    
+    return images
+
+# Replace the static MEDIA_EXAMPLE_IMAGES with a dynamic function
+def get_media_example_images():
+    """
+    Dynamically generates the MEDIA_EXAMPLE_IMAGES dictionary based on directory contents.
+    """
+    media_images = {}
+    plates_dir = os.path.join('app', 'static', 'images', 'plates')
+    
+    if os.path.exists(plates_dir):
+        for media_type in os.listdir(plates_dir):
+            if os.path.isdir(os.path.join(plates_dir, media_type)):
+                images = get_images_from_directory(media_type)
+                if images:  # Only add to dictionary if images were found
+                    media_images[media_type] = images
+    
+    return media_images
+
+def get_organism_images(organism, media_type=None):
+    """
+    Scans the organisms directory for images related to a specific organism.
+    If media_type is provided, returns only images from that media type's subfolder.
+    Returns a list of dictionaries containing image information.
+    """
+    images = []
+    
+    # Base path for the organism
+    base_path = os.path.join('app', 'static', 'images', 'organisms', organism)
+    
+    if not os.path.exists(base_path):
+        return images
+    
+    if media_type:
+        # Look for images in the media-specific subfolder
+        media_path = os.path.join(base_path, media_type)
+        if os.path.exists(media_path):
+            for filename in os.listdir(media_path):
+                if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.jfif')):
+                    caption = os.path.splitext(filename)[0]
+                    caption = caption.replace('_', ' ').replace('-', ' ')
+                    caption = caption.title()
+                    
+                    images.append({
+                        'src': f'/static/images/organisms/{organism}/{media_type}/{filename}',
+                        'caption': caption
+                    })
+    
+    return images
+
 @main_bp.route('/')
 def home():
     return render_template('home.html')
@@ -1715,8 +1485,8 @@ def results():
         organism_results = GROWTH_RESULTS.get(organism, {})
         growth_result = organism_results.get(media, organism_results.get('default', default_result))
         
-        # Get the corresponding plate images if available
-        plate_images = PLATE_IMAGES.get(organism, {}).get(media, [])
+        # Get images from the organism's media-specific folder only
+        all_images = get_organism_images(organism, media)
         
         return render_template('results.html',
                              organism=organism,
@@ -1725,7 +1495,7 @@ def results():
                              media_name=media_name,
                              confirmatory_tests=confirmatory_tests,
                              characteristics=characteristics,
-                             plate_images=plate_images,
+                             plate_images=all_images,
                              growth_result=growth_result,
                              media_info=media_info)
     return redirect(url_for('main.home'))
@@ -1746,14 +1516,23 @@ def media_info():
     media_id = request.form.get('media')
     print(f"Media ID: {media_id}")  # Debug print
     
-    if media_id not in MEDIA_INFO:
-        flash('Selected media not found', 'error')
+    # Handle different media ID formats
+    media_id_mappings = {
+        'chrom_agar': 'chromagar_candida',
+        'thayer_martin': 'modified_thayer_martin'
+    }
+    
+    # Try to get the standardized media ID
+    standardized_media_id = media_id_mappings.get(media_id, media_id)
+    
+    if standardized_media_id not in MEDIA_INFO:
+        flash(f'Media type "{media_id}" not found in database', 'error')
         return redirect(url_for('main.media_search'))
     
-    media_data = MEDIA_INFO[media_id]
+    media_data = MEDIA_INFO[standardized_media_id]
     
-    # Get example images from the predefined dictionary
-    example_images = MEDIA_EXAMPLE_IMAGES.get(media_id, [])
+    # Get example images dynamically from the directory
+    example_images = get_images_from_directory(media_id)  # Use original media_id for image lookup
     
     return render_template('media_info.html',
                          media_name=media_data['name'],
@@ -1762,4 +1541,4 @@ def media_info():
                          composition=media_data['composition'],
                          characteristics=media_data['characteristics'],
                          common_uses=media_data['common_uses'],
-                         dynamic_images=example_images)  # Pass example_images as dynamic_images
+                         dynamic_images=example_images)
