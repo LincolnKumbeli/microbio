@@ -41,11 +41,11 @@
                 {% endfor %}
             </ul>
 
-            {% if media_images %}
-            <h2>Media Images</h2>
-            <div id="mediaCarousel" class="carousel slide mb-4" data-bs-ride="false">
+            {% if dynamic_images %}
+            <h2>Images</h2>
+            <div id="dynamicCarousel" class="carousel slide mb-4" data-bs-ride="false">
                 <div class="carousel-inner">
-                    {% for image in media_images %}
+                    {% for image in dynamic_images %}
                     <div class="carousel-item {% if loop.first %}active{% endif %}">
                         <img src="{{ image.src }}" class="d-block w-100" alt="{{ image.caption }}">
                         <div class="carousel-caption bg-dark bg-opacity-75">
@@ -54,38 +54,12 @@
                     </div>
                     {% endfor %}
                 </div>
-                {% if media_images|length > 1 %}
-                <button class="carousel-control-prev" type="button" data-bs-target="#mediaCarousel" data-bs-slide="prev">
+                {% if dynamic_images|length > 1 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#dynamicCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#mediaCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                {% endif %}
-            </div>
-            {% endif %}
-
-            {% if example_images %}
-            <h2>Example Growth Patterns</h2>
-            <div id="exampleCarousel" class="carousel slide mb-4" data-bs-ride="false">
-                <div class="carousel-inner">
-                    {% for image in example_images %}
-                    <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <img src="{{ image.src }}" class="d-block w-100" alt="{{ image.caption }}">
-                        <div class="carousel-caption bg-dark bg-opacity-75">
-                            <p>{{ image.caption }}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% if example_images|length > 1 %}
-                <button class="carousel-control-prev" type="button" data-bs-target="#exampleCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#exampleCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#dynamicCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
