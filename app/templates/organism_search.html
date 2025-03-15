@@ -31,9 +31,8 @@
                                 <option value="k_pneumoniae">Klebsiella pneumoniae (including CRE)</option>
                                 <option value="l_pneumophila">Legionella pneumophila</option>
                                 <option value="n_gonorrhoeae">Neisseria gonorrhoeae</option>
+                                <option value="n_meningitidis">Neisseria meningitidis</option>
                                 <option value="p_aeruginosa">Pseudomonas aeruginosa</option>
-                                <option value="s_typhi">Salmonella typhi</option>
-                                <option value="shigella">Shigella species</option>
                             </optgroup>
                             
                             <!-- Fungi -->
@@ -105,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const customMediaDiv = document.getElementById('customMediaSelection');
     const mediaSelect = document.getElementById('media');
     const submitButton = document.getElementById('submitButton');
+    const form = document.querySelector('form');
+    const useRecommendedBtn = document.getElementById('useRecommended');
     
     // Debug check for elements
     console.log('Elements found:', {
@@ -113,7 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
         recommendationList: !!recommendationList,
         customMediaDiv: !!customMediaDiv,
         mediaSelect: !!mediaSelect,
-        submitButton: !!submitButton
+        submitButton: !!submitButton,
+        form: !!form,
+        useRecommendedBtn: !!useRecommendedBtn
     });
     
     // Media recommendations for each organism
@@ -124,15 +127,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'k_pneumoniae': ['mac_conkey'],
         's_pneumoniae': ['blood_agar'],
         'n_gonorrhoeae': ['thayer_martin', 'chocolate_agar'],
+        'n_meningitidis': ['thayer_martin', 'chocolate_agar'],
         'c_difficile': ['ccfa'],
         'h_influenzae': ['chocolate_agar'],
         'l_pneumophila': ['bcye'],
         'aspergillus': ['sab_dex'],
         'c_albicans': ['chrom_agar', 'sab_dex'],
         'c_auris': ['chrom_agar', 'sab_dex'],
-        'a_baumannii': ['mac_conkey', 'blood_agar'],
-        's_typhi': ['xld', 'dca', 'he', 'selenite'],
-        'shigella': ['xld', 'dca', 'he']
+        'a_baumannii': ['mac_conkey', 'blood_agar']
     };
 
     // Media display names
@@ -172,58 +174,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to update recommendations display
     function updateRecommendations(selectedOrganism) {
-        console.log('updateRecommendations called with:', selectedOrganism);
+        // Debug logging for recommendations update
+        console.group('Update Recommendations Debug');
+        console.log('Function called with organism:', selectedOrganism || '(no organism selected)');
+        console.log('Organism exists in recommendations?', selectedOrganism in recommendations);
+        console.log('Current display state:', {
+            recommendationsDiv: recommendationsDiv.style.display,
+            customMediaDiv: customMediaDiv.style.display,
+            submitButton: submitButton.style.display
+        });
         
         if (selectedOrganism && recommendations[selectedOrganism]) {
             const recommendedMedia = recommendations[selectedOrganism];
             console.log('Found recommended media:', recommendedMedia);
+            console.log('Media names available:', mediaNames);
             
             // Clear previous recommendations
             recommendationList.innerHTML = '';
+            console.log('Cleared previous recommendations, about to add:', recommendedMedia);
+            
+            // First show the recommendations div
+            recommendationsDiv.style.display = 'block';
+            console.log('Set recommendations div display to block');
             
             // Display recommendations as a list with badges and descriptions
             recommendedMedia.forEach((media, index) => {
-                console.log('Creating recommendation for:', media);
+                console.log(`Adding media ${index + 1}: ${media}`);
+                const displayName = mediaNames[media];
+                console.log(`Display name for ${media}:`, displayName);
+                
+                console.log(`Creating recommendation ${index + 1}:`, {
+                    media: media,
+                    displayName: mediaNames[media],
+                    isPrimary: index === 0
+                });
                 
                 const item = document.createElement('div');
-                item.className = 'list-group-item';
+                item.className = 'list-group-item d-flex align-items-center';
+                item.style.display = 'flex';
+                console.log('Created list item with flex display');
                 
                 // Create badge
                 const badge = document.createElement('span');
                 badge.className = 'badge bg-primary me-2';
+                badge.style.marginRight = '10px';
                 badge.textContent = index === 0 ? 'Primary' : 'Secondary';
+                console.log('Created badge:', badge.outerHTML);
                 
                 // Create media name
                 const mediaName = document.createElement('strong');
                 mediaName.textContent = mediaNames[media] || media;
+                mediaName.style.flex = '1';
+                console.log('Created media name:', mediaName.outerHTML);
                 
                 // Add elements to item
                 item.appendChild(badge);
                 item.appendChild(mediaName);
                 
-                // Add description for Salmonella and Shigella
-                if (selectedOrganism === 's_typhi' || selectedOrganism === 'shigella') {
-                    const description = document.createElement('p');
-                    description.className = 'mb-0 mt-2 text-muted small';
-                    if (media === 'xld') {
-                        description.textContent = selectedOrganism === 's_typhi' ? 
-                            'Primary choice for isolation. S. Typhi ferments xylose but does not produce gas, forming red colonies with black centers due to H₂S production. Contains xylose, lactose, sucrose, lysine, and H₂S indicators.' :
-                            'Primary choice for isolation. Colonies appear red without black centers.';
-                    } else if (media === 'dca') {
-                        description.textContent = selectedOrganism === 's_typhi' ?
-                            'Selective medium that inhibits normal gut flora. S. Typhi appears as colorless colonies with black centers. Contains sodium deoxycholate, citrate, lactose, and H₂S indicators.' :
-                            'Selective medium showing colorless colonies.';
-                    } else if (media === 'he') {
-                        description.textContent = selectedOrganism === 's_typhi' ?
-                            'Used for enteric pathogen recovery. Shows green colonies with black centers. Contains bile salts, carbohydrates for fermentation, and H₂S indicators.' :
-                            'Shows green colonies without black centers.';
-                    } else if (media === 'selenite' && selectedOrganism === 's_typhi') {
-                        description.textContent = 'Enrichment broth used to recover S. Typhi from low bacterial count samples. Contains sodium selenite to inhibit competing flora while allowing Salmonella growth.';
-                    }
-                    item.appendChild(description);
-                }
-                
                 recommendationList.appendChild(item);
+                console.log('Added complete recommendation item:', item.outerHTML);
             });
             
             // Set the media value to the primary (first) recommendation
@@ -233,28 +242,105 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Show/hide appropriate elements
-            showElement(recommendationsDiv);
-            hideElement(customMediaDiv);
-            showElement(submitButton);
+            customMediaDiv.style.display = 'none';
+            submitButton.style.display = 'none';
+            
+            // Force reflow and verify visibility
+            recommendationsDiv.offsetHeight;
+            console.log('Final visibility check:', {
+                recommendationsDiv: {
+                    display: recommendationsDiv.style.display,
+                    visibility: window.getComputedStyle(recommendationsDiv).visibility,
+                    offsetHeight: recommendationsDiv.offsetHeight,
+                    childNodes: recommendationList.childNodes.length
+                },
+                customMediaDiv: customMediaDiv.style.display,
+                submitButton: submitButton.style.display
+            });
             
         } else {
-            console.log('No recommendations found for organism:', selectedOrganism);
+            if (!selectedOrganism) {
+                console.log('No organism selected yet - waiting for user selection');
+            } else {
+                console.warn('No recommendations found for organism:', selectedOrganism);
+            }
+            console.log('Available recommendations:', Object.keys(recommendations));
             // Hide all relevant divs if no organism is selected
-            hideElement(recommendationsDiv);
-            hideElement(customMediaDiv);
-            hideElement(submitButton);
+            recommendationsDiv.style.display = 'none';
+            customMediaDiv.style.display = 'none';
+            submitButton.style.display = 'none';
+            
+            console.log('Hidden all divs - waiting for organism selection');
         }
+        console.groupEnd();
+    }
+
+    // Add form submit handler
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default submission
+            
+            const selectedOrganism = organismSelect.value;
+            console.log('Form submission - Selected organism:', selectedOrganism);
+            
+            if (selectedOrganism && recommendations[selectedOrganism]) {
+                // If using recommended media, ensure the primary recommendation is set
+                if (!customMediaDiv.style.display || customMediaDiv.style.display === 'none') {
+                    const recommendedMedia = recommendations[selectedOrganism][0];
+                    mediaSelect.value = recommendedMedia;
+                    console.log('Setting recommended media:', recommendedMedia);
+                }
+                
+                // Log final form state
+                console.log('Final form state:', {
+                    organism: selectedOrganism,
+                    media: mediaSelect.value,
+                    recommendationsAvailable: recommendations[selectedOrganism],
+                    mediaSelectVisible: customMediaDiv.style.display !== 'none'
+                });
+                
+                // Create hidden input for media if not already present
+                let hiddenMedia = form.querySelector('input[name="media"]');
+                if (!hiddenMedia) {
+                    hiddenMedia = document.createElement('input');
+                    hiddenMedia.type = 'hidden';
+                    hiddenMedia.name = 'media';
+                    form.appendChild(hiddenMedia);
+                }
+                hiddenMedia.value = mediaSelect.value;
+                
+                // Submit the form
+                console.log('Submitting form with values:', {
+                    organism: selectedOrganism,
+                    media: hiddenMedia.value
+                });
+                form.submit();
+            } else {
+                console.error('No recommendations found for organism:', selectedOrganism);
+            }
+        });
     }
 
     // Add change event listener to organism select
     if (organismSelect) {
         organismSelect.addEventListener('change', function(event) {
-            console.log('Organism select changed to:', event.target.value);
-            updateRecommendations(event.target.value);
+            const selectedValue = event.target.value;
+            
+            // Debug logging for organism selection
+            console.group('Organism Selection Debug');
+            console.log('Selected organism value:', selectedValue);
+            console.log('HTML option text:', event.target.options[event.target.selectedIndex].text);
+            console.log('Available organisms in recommendations:', Object.keys(recommendations));
+            console.log('Has recommendations?', selectedValue in recommendations);
+            
+            if (selectedValue in recommendations) {
+                console.log('Recommendations found:', recommendations[selectedValue]);
+            }
+            console.groupEnd();
+            
+            // Use standard update function for all organisms
+            updateRecommendations(selectedValue);
         });
-        
-        // Log initial value
-        console.log('Initial organism value:', organismSelect.value);
     }
 
     // Add click event listener to custom media button
@@ -264,7 +350,62 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Choose custom media clicked');
             hideElement(recommendationsDiv);
             showElement(customMediaDiv);
-            showElement(submitButton);
+            hideElement(submitButton); // Hide the submit button since we'll auto-submit
+        });
+    }
+
+    // Add change event listener to media select for auto-submit
+    if (mediaSelect) {
+        mediaSelect.addEventListener('change', function() {
+            console.log('Media selection changed, auto-submitting form');
+            if (organismSelect.value && mediaSelect.value) {
+                form.submit();
+            }
+        });
+    }
+
+    // Add click event listener to use recommended button
+    if (useRecommendedBtn) {
+        useRecommendedBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            const selectedOrganism = organismSelect.value;
+            
+            // Debug logging for form submission
+            console.group('Form Submission Debug');
+            console.log('Selected organism:', selectedOrganism);
+            console.log('Has recommendations?', selectedOrganism in recommendations);
+            
+            if (selectedOrganism && recommendations[selectedOrganism]) {
+                const recommendedMedia = recommendations[selectedOrganism][0];
+                console.log('Using recommended media:', recommendedMedia);
+                
+                // Ensure media select has the value
+                mediaSelect.value = recommendedMedia;
+                
+                // Create or update hidden input
+                let hiddenMedia = form.querySelector('input[name="media"]');
+                if (!hiddenMedia) {
+                    hiddenMedia = document.createElement('input');
+                    hiddenMedia.type = 'hidden';
+                    hiddenMedia.name = 'media';
+                    form.appendChild(hiddenMedia);
+                    console.log('Created hidden media input');
+                }
+                hiddenMedia.value = recommendedMedia;
+                
+                console.log('Form data before submission:', {
+                    organism: selectedOrganism,
+                    media: recommendedMedia,
+                    hiddenMediaValue: hiddenMedia.value,
+                    mediaSelectValue: mediaSelect.value
+                });
+                
+                form.submit();
+            } else {
+                console.error('No recommendations available for:', selectedOrganism);
+            }
+            console.groupEnd();
         });
     }
 
