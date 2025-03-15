@@ -314,6 +314,42 @@ CONFIRMATORY_TESTS_DATA = {
                 {'test': 'Motility', 'result': 'Non-motile', 'explanation': 'Characteristic of Acinetobacter species'}
             ]
         }
+    ],
+    'salmonella': [
+        {
+            'name': 'Biochemical Tests',
+            'tests': [
+                {'test': 'Triple Sugar Iron (TSI)', 'result': 'K/A with H₂S', 'explanation': 'Alkaline slant/Acid butt with black H₂S production'},
+                {'test': 'Citrate Utilization', 'result': 'Positive', 'explanation': 'Can use citrate as sole carbon source'},
+                {'test': 'Lysine Decarboxylase', 'result': 'Positive', 'explanation': 'Decarboxylates lysine, raising pH'}
+            ]
+        },
+        {
+            'name': 'Additional Tests',
+            'tests': [
+                {'test': 'Urease', 'result': 'Negative', 'explanation': 'Does not produce urease'},
+                {'test': 'Indole Production', 'result': 'Negative', 'explanation': 'Does not produce indole'},
+                {'test': 'Motility', 'result': 'Positive', 'explanation': 'Motile by peritrichous flagella'}
+            ]
+        }
+    ],
+    'shigella': [
+        {
+            'name': 'Biochemical Tests',
+            'tests': [
+                {'test': 'Triple Sugar Iron (TSI)', 'result': 'K/A without H₂S', 'explanation': 'Alkaline slant/Acid butt, no H₂S production'},
+                {'test': 'Citrate Utilization', 'result': 'Negative', 'explanation': 'Cannot use citrate as sole carbon source'},
+                {'test': 'Lysine Decarboxylase', 'result': 'Negative', 'explanation': 'Does not decarboxylate lysine'}
+            ]
+        },
+        {
+            'name': 'Additional Tests',
+            'tests': [
+                {'test': 'Urease', 'result': 'Negative', 'explanation': 'Does not produce urease'},
+                {'test': 'Indole Production', 'result': 'Variable', 'explanation': 'Species dependent'},
+                {'test': 'Motility', 'result': 'Negative', 'explanation': 'Non-motile'}
+            ]
+        }
     ]
 }
 
@@ -825,42 +861,31 @@ growth_characteristics = {
     'xld': {
         'name': 'Xylose-Lysine-Deoxycholate (XLD) Agar',
         'type': 'Selective and Differential Media',
-        'purpose': 'Used for the isolation and differentiation of Shigella species and Salmonella species from other non-pathogenic enteric bacteria',
+        'purpose': 'Used for the isolation and differentiation of Shigella and Salmonella species from clinical and food samples while differentiating them from other enteric bacteria. The medium inhibits the growth of most Gram-positive organisms, allowing only target enteric pathogens to grow.',
         'composition': [
-            {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that inhibits gram-positive organisms and many non-enteric gram-negative bacilli'},
-            {'name': 'Xylose', 'description': 'Fermentable carbohydrate for differentiation'},
-            {'name': 'Lysine', 'description': 'Amino acid for detecting lysine decarboxylation'},
-            {'name': 'Lactose and Sucrose', 'description': 'Additional fermentable carbohydrates for differentiation'},
-            {'name': 'Phenol Red', 'description': 'pH indicator that detects acid production from carbohydrate fermentation'},
-            {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'H₂S indicator system'},
-            {'name': 'Agar Base', 'description': 'Solidifying agent'}
+            {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that disrupts the cell membranes of Gram-positive bacteria, preventing their growth while allowing Gram-negative enteric pathogens to thrive. This ensures that unwanted flora, such as Staphylococcus and Enterococcus, do not interfere with pathogen isolation.'},
+            {'name': 'Xylose', 'description': 'Most enteric bacteria, except Shigella, ferment xylose, producing acid and turning the medium yellow. Salmonella initially ferments xylose but later decarboxylates lysine, restoring an alkaline pH and turning the medium red.'},
+            {'name': 'Lysine', 'description': 'Salmonella species possess lysine decarboxylase, an enzyme that breaks down lysine, producing an alkaline reaction that changes the medium back to red. This helps distinguish Salmonella from other lactose non-fermenting bacteria.'},
+            {'name': 'Lactose and Sucrose', 'description': 'These sugars promote acid production in coliform bacteria, keeping them yellow and differentiating them from Shigella and Salmonella, which do not ferment them. This prevents non-pathogenic coliforms from being mistaken for enteric pathogens.'},
+            {'name': 'Phenol Red', 'description': 'Changes color based on pH: yellow in acidic conditions (sugar fermentation), red in neutral/alkaline conditions, and pink in highly alkaline conditions. This enables visual differentiation between fermenters and non-fermenters.'},
+            {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'Salmonella reduces sodium thiosulfate to hydrogen sulfide (H₂S), which reacts with ferric ammonium citrate to produce black-centered colonies. This feature helps distinguish Salmonella from Shigella, which does not produce H₂S.'}
         ],
         'characteristics': [
-            'Base medium appears pink to red in color',
+            'Base medium appears pink to red in color due to the neutral pH of the medium',
             'Differential characteristics based on:',
             '- Carbohydrate fermentation (xylose, lactose, sucrose)',
             '- Lysine decarboxylation',
             '- H₂S production',
             'Colony appearances:',
-            '- Shigella spp.: Colorless colonies (red, same as medium)',
-            '- Salmonella spp.: Colorless colonies with black centers (H₂S production)',
+            '- Shigella: Red colonies (does not ferment xylose or produce H₂S)',
+            '- Salmonella: Red colonies with black centers (initially ferments xylose, then decarboxylates lysine, and produces H₂S)',
             '- Non-pathogenic fermenters: Yellow colonies'
         ],
         'common_uses': [
-            'Isolation and identification of Shigella species',
-            'Isolation and identification of Salmonella species',
-            'Differentiation of pathogenic enteric bacteria from non-pathogenic organisms',
-            'Processing of stool specimens for enteric pathogens'
-        ],
-        'special_notes': [
-            'Salmonella colonies remain colorless despite xylose fermentation due to lysine decarboxylation raising pH',
-            'Black center in Salmonella colonies is due to H₂S production',
-            'Yellow colonies typically indicate non-pathogenic organisms that ferment one or more of the carbohydrates'
-        ],
-        'images': [
-            {'src': '/static/images/plates/xld/xld_blank.jpg', 'caption': 'Uninoculated XLD Agar plate'},
-            {'src': '/static/images/plates/xld/xld_salmonella.jpg', 'caption': 'Salmonella species showing characteristic black-centered colonies'},
-            {'src': '/static/images/plates/xld/xld_shigella.jpg', 'caption': 'Shigella species showing colorless colonies'}
+            'Isolation and identification of Shigella species from patients with dysentery or foodborne illness',
+            'Isolation and identification of Salmonella species from clinical and food samples',
+            'Processing of stool specimens for enteric pathogens',
+            'Screening food samples for potential pathogens'
         ]
     },
     'sab_dex': {
@@ -931,6 +956,34 @@ growth_characteristics = {
             {'src': '/static/images/plates/chromagar/chrom_mixed.jpg', 'caption': 'Mixed Candida species showing characteristic colors'},
             {'src': '/static/images/plates/chromagar/chrom_albicans.jpg', 'caption': 'C. albicans showing characteristic green colonies'}
         ]
+    },
+    'salmonella': {
+        'xld': {
+            'morphology': 'Round, smooth colonies with black centers',
+            'color': 'Red colonies with black centers',
+            'size': '2-3 mm in diameter',
+            'other': 'H₂S production creates black centers'
+        },
+        'mac_conkey': {
+            'morphology': 'Round, smooth colonies',
+            'color': 'Colorless (non-lactose fermenter)',
+            'size': '2-3 mm in diameter',
+            'other': 'Non-lactose fermenting colonies'
+        }
+    },
+    'shigella': {
+        'xld': {
+            'morphology': 'Round, smooth colonies',
+            'color': 'Red colonies without black centers',
+            'size': '1-2 mm in diameter',
+            'other': 'No H₂S production, no xylose fermentation'
+        },
+        'mac_conkey': {
+            'morphology': 'Round, smooth colonies',
+            'color': 'Colorless (non-lactose fermenter)',
+            'size': '1-2 mm in diameter',
+            'other': 'Non-lactose fermenting colonies'
+        }
     }
 }
 
@@ -1050,6 +1103,34 @@ GROWTH_RESULTS = {
         'blood_agar': {'result': 'GOOD', 'description': 'Smooth, dome-shaped colonies with entire margins. White to cream-colored, opaque, 1.5-2.5 mm in diameter after 24 hours. Non-hemolytic.'},
         'mac_conkey': {'result': 'GOOD', 'description': 'Smooth, slightly domed colonies. Pink to mauve (non-lactose fermenter), 1-2 mm in diameter.'},
         'default': {'result': 'VARIABLE', 'description': 'Growth may be variable. Blood Agar or MacConkey Agar recommended for optimal isolation and identification of A. baumannii.'}
+    },
+    'salmonella': {
+        'xld': {
+            'result': 'GOOD',
+            'description': 'Red colonies with black centers due to H₂S production. Initially ferments xylose but later decarboxylates lysine.'
+        },
+        'mac_conkey': {
+            'result': 'GOOD',
+            'description': 'Colorless colonies (non-lactose fermenter)'
+        },
+        'default': {
+            'result': 'VARIABLE',
+            'description': 'Growth characteristics vary by medium. XLD is recommended for optimal isolation and identification.'
+        }
+    },
+    'shigella': {
+        'xld': {
+            'result': 'GOOD',
+            'description': 'Red colonies without black centers. Does not ferment xylose or produce H₂S.'
+        },
+        'mac_conkey': {
+            'result': 'GOOD',
+            'description': 'Colorless colonies (non-lactose fermenter)'
+        },
+        'default': {
+            'result': 'VARIABLE',
+            'description': 'Growth characteristics vary by medium. XLD is recommended for optimal isolation and identification.'
+        }
     }
 }
 
@@ -1067,7 +1148,9 @@ ORGANISM_NAMES = {
     'aspergillus': 'Aspergillus species',
     'c_albicans': 'Candida albicans',
     'c_auris': 'Candida auris',
-    'a_baumannii': 'Acinetobacter baumannii'
+    'a_baumannii': 'Acinetobacter baumannii',
+    'salmonella': 'Salmonella species',
+    'shigella': 'Shigella species'
 }
 
 # Media name mappings
@@ -1174,6 +1257,10 @@ chocolate_agar = {
         'Isolation of Haemophilus influenzae',
         'Isolation of Neisseria gonorrhoeae',
         'Culturing of other fastidious organisms'
+    ],
+    'images': [
+        {'src': '/static/images/plates/chocolate/choc_growth1.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 1'},
+        {'src': '/static/images/plates/chocolate/choc_growth2.jpg', 'caption': 'Growth pattern on Chocolate Agar - Example 2'}
     ]
 }
 
@@ -1342,25 +1429,31 @@ chromagar_candida = {
 xld = {
     'name': 'Xylose-Lysine-Deoxycholate (XLD) Agar',
     'type': 'Selective and Differential Media',
-    'purpose': 'Used for the isolation and differentiation of Shigella and Salmonella species',
+    'purpose': 'Used for the isolation and differentiation of Shigella and Salmonella species from clinical and food samples while differentiating them from other enteric bacteria. The medium inhibits the growth of most Gram-positive organisms, allowing only target enteric pathogens to grow.',
     'composition': [
-        {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that inhibits gram-positive organisms'},
-        {'name': 'Xylose', 'description': 'Fermentable carbohydrate for differentiation'},
-        {'name': 'Lysine', 'description': 'Amino acid for detecting lysine decarboxylation'},
-        {'name': 'Lactose and Sucrose', 'description': 'Additional fermentable carbohydrates'},
-        {'name': 'Phenol Red', 'description': 'pH indicator'},
-        {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'H₂S indicator system'}
+        {'name': 'Sodium Deoxycholate', 'description': 'Selective agent that disrupts the cell membranes of Gram-positive bacteria, preventing their growth while allowing Gram-negative enteric pathogens to thrive. This ensures that unwanted flora, such as Staphylococcus and Enterococcus, do not interfere with pathogen isolation.'},
+        {'name': 'Xylose', 'description': 'Most enteric bacteria, except Shigella, ferment xylose, producing acid and turning the medium yellow. Salmonella initially ferments xylose but later decarboxylates lysine, restoring an alkaline pH and turning the medium red.'},
+        {'name': 'Lysine', 'description': 'Salmonella species possess lysine decarboxylase, an enzyme that breaks down lysine, producing an alkaline reaction that changes the medium back to red. This helps distinguish Salmonella from other lactose non-fermenting bacteria.'},
+        {'name': 'Lactose and Sucrose', 'description': 'These sugars promote acid production in coliform bacteria, keeping them yellow and differentiating them from Shigella and Salmonella, which do not ferment them. This prevents non-pathogenic coliforms from being mistaken for enteric pathogens.'},
+        {'name': 'Phenol Red', 'description': 'Changes color based on pH: yellow in acidic conditions (sugar fermentation), red in neutral/alkaline conditions, and pink in highly alkaline conditions. This enables visual differentiation between fermenters and non-fermenters.'},
+        {'name': 'Sodium Thiosulfate and Ferric Ammonium Citrate', 'description': 'Salmonella reduces sodium thiosulfate to hydrogen sulfide (H₂S), which reacts with ferric ammonium citrate to produce black-centered colonies. This feature helps distinguish Salmonella from Shigella, which does not produce H₂S.'}
     ],
     'characteristics': [
-        'Base medium appears pink to red in color',
-        'Differential characteristics based on carbohydrate fermentation and H₂S production',
-        'Shigella: Colorless colonies',
-        'Salmonella: Colorless colonies with black centers'
+        'Base medium appears pink to red in color due to the neutral pH of the medium',
+        'Differential characteristics based on:',
+        '- Carbohydrate fermentation (xylose, lactose, sucrose)',
+        '- Lysine decarboxylation',
+        '- H₂S production',
+        'Colony appearances:',
+        '- Shigella: Red colonies (does not ferment xylose or produce H₂S)',
+        '- Salmonella: Red colonies with black centers (initially ferments xylose, then decarboxylates lysine, and produces H₂S)',
+        '- Non-pathogenic fermenters: Yellow colonies'
     ],
     'common_uses': [
-        'Isolation and identification of Shigella species',
-        'Isolation and identification of Salmonella species',
-        'Processing of stool specimens for enteric pathogens'
+        'Isolation and identification of Shigella species from patients with dysentery or foodborne illness',
+        'Isolation and identification of Salmonella species from clinical and food samples',
+        'Processing of stool specimens for enteric pathogens',
+        'Screening food samples for potential pathogens'
     ]
 }
 
